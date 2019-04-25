@@ -1,0 +1,10 @@
+<div *ngFor="let artist of artists">
+  <p>{{ artist.name }} wrote {{ artist.albums.length }} albums: </p>
+  <div *ngFor="let album of artist.albums">
+    <p style="text-indent: 20px">
+      Album titled <b>{{ album.title }}</b> by
+                   <b>{{ album.artist }}</b> contains
+                   <b>{{ album.ntracks }}</b> tracks
+    </p>
+  </div>
+</div>
