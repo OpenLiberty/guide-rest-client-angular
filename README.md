@@ -1,1 +1,0 @@
-# guide-rest-client-angular
