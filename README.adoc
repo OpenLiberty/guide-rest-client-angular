@@ -35,21 +35,22 @@ Liberty.
 
 == What you'll learn
 
-You'll learn how to access a REST service and deserialize the returned JSON that contains a list of
-artists and their albums by using an Angular service and the Angular HTTP Client. You'll present this
-data using an Angular component.
-
-The REST service that provides the artists and albums resource was written for you in advance and
-responds with the [hotspot]`artists.json`. 
+You'll learn how to access a REST service and deserialize the returned JSON that 
+contains a list of artists and their albums by using an Angular service and the Angular 
+HTTP Client. You'll present this data using an Angular component.
 
 https://angular.io[Angular^] is a framework for creating interactive web applications. 
 Angular applications are written in HTML, CSS, and 
-https://typescriptlang.org[TypeScript^], a variant of JavaScript. 
-Angular applications must be compiled. The Angular compilation step has been
-configured as part of the Maven build.
+https://typescriptlang.org[TypeScript^], a variant of JavaScript. Angular's template
+engine makes it easy to display and manipulate data in an intuitive manner, allowing 
+you to quickly build a user interface for your REST services.
+
+The REST service that provides the artists and albums resource was written for you in 
+advance and responds with the [hotspot]`artists.json`. 
 
 The Angular application has been created and configured for you in the `frontend` 
-directory. It contains the default starter page. 
+directory. It contains the default starter page. Angular applications must be 
+compiled. The Angular compilation step has been configured as part of the Maven build.
 
 artists.json
 [source, json, linenums, role="code_column"]
@@ -108,7 +109,7 @@ frontend. After you start the Open Liberty server, you do not need to restart it
 
 == Importing the HTTP client
 
-Navigate to the start directory to begin. 
+Navigate to the `start` directory to begin. 
 
 Your application will need some way of communicating with RESTful web services in order 
 to retrieve their resources. In the case of this guide, your application will need to 
@@ -130,13 +131,18 @@ app.module.ts
 include::finish/src/main/frontend/src/app/app.module.ts[tags=**]
 ----
 
-Angular applications consist of modules; each module declares all other modules 
-that it imports or exports. AppModule is the root module, and most apps import 
-`HttpClientModule` here.
+Angular applications consist of modules. which are groups of classes that 
+perform a specific function. The Angular framework provides its own modules 
+for applications to use. One of these, the HTTP Client module, includes the 
+classes you need to consume a RESTful API from your application.
 
-Import the [hotspot=3]`HttpClientModule` class and update the [hotspot=11-14]`imports` 
-array within the [hotspot=7-17]`@NgModule` declaration to include 
-[hotspot=13]`HttpClientModule`.
+Your application is organized into a module, called the root module and defined in
+`app.module.ts`. You must import the HTTP Client module into your module
+in order for its classes to be accessible from your application's code.
+
+Import the [hotspot=3]`HttpClientModule` class into the file, then update the 
+[hotspot=11-14]`imports` array within the [hotspot=7-17]`@NgModule` declaration to 
+include [hotspot=13]`HttpClientModule`.
 
 == Creating the Angular component
 
@@ -170,16 +176,16 @@ request data from the REST API. It contains a constant [hotspot=9]`ARTISTS_URL` 
 points to the API endpoint it will request data from. Finally, it implements a method 
 [hotspot=11-18]`fetchArtists()` that makes the request and returns the result.
 
-To obtain the data for display on the page, `fetchArtists()` Tries to use the 
+To obtain the data for display on the page, [hotspot=11-18]`fetchArtists()` tries to use the 
 injected [hotspot=13]`http` instance to perform a `GET` HTTP request to the 
-[hotspot=9]`ARTISTS_URL` and returning the result. If an error occurs,it prints the 
+[hotspot=9]`ARTISTS_URL` and returning the result. If an error occurs, it prints the 
 message of the error to the console. 
 
 [hotspot=11-18]`fetchArtists()` uses a feature of Javascript called 
 [hotspot=11]`async` and [hotspot=13]`await` to make the request and receive the 
 response without preventing the application from working while it waits. In order to be 
 compatible with this feature, the result of the [hotspot=13]`HttpClient.get()` method 
-must be converted to a Promise using `toPromise()`.
+must be converted to a Promise using [hotspot=13]`toPromise()`.
 
 Finally, update the [hotspot=22-37]`AppComponent` class to use this service. 
 
@@ -196,7 +202,7 @@ Inject an instance of the [hotspot=31]`ArtistsService` class into the constructo
 use the [hotspot=34]`artistsService` instance to request the artists data. Since 
 [hotspot=11-18]`fetchArtists()` is an `async` function, it will return a Promise. To 
 retrieve the data from the request, call [hotspot=34-36]`then()` on the promise and 
-provide a function that will take in the data and store it to the `artists` class 
+provide a function that will take in the data and store it to the [hotspot=29]`artists` class 
 member.
 
 == Creating the Angular component template
@@ -213,7 +219,7 @@ display the data in the browser.
 app.component.html
 [source, html, linenums, role="code_column"]
 ----
-include::finish/src/main/frontend/src/app/app.component.html[tags=html]
+include::finish/src/main/frontend/src/app/app.component.html[tags=**]
 ----
 
 The Angular application is already set up to display the contents of this file. Replace 
@@ -222,7 +228,21 @@ iterate over all artists. The `artists` variable is bound to the `artists` membe
 the component. Use the same strategy to iterate over each [hotspot=3]`album` for the 
 artist.
 
-After everything is set up, point your browser to the web application root 
+After everything is set up, if you have not started the REST service already, build 
+and start both the REST service and the frontend by running the following command:
+[role='command']
+```
+mvn install liberty:start-server
+```
+
+If the REST service is already running, compile only the frontend by running the 
+following command:
+[role='command']
+```
+mvn generate-resources
+```
+
+Then point your browser to the web application root 
 http://localhost:9080/app[http://localhost:9080/app^] to see the following output:
 
 [subs="quotes", role="no_copy"]

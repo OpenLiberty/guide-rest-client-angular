@@ -16,7 +16,6 @@ export class ArtistsService {
       console.error(`Error occurred: ${error}`);
     }
   }
-
 }
 
 @Component({
@@ -35,6 +34,4 @@ export class AppComponent {
       this.artists = data;
     });
   }
-
-
 }
