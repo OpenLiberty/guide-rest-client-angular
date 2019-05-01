@@ -202,7 +202,7 @@ Inject an instance of the [hotspot=31]`ArtistsService` class into the constructo
 use the [hotspot=34]`artistsService` instance to request the artists data. Since
 [hotspot=11-19]`fetchArtists()` is an `async` function, it will return a Promise. To
 retrieve the data from the request, call [hotspot=34-36]`then()` on the promise and
-provide a function that will take in the data and store it to the [hotspot=29]`artists` class
+provide a function that will take in the data and store it to the [hotspot=28]`artists` class
 member.
 
 == Creating the Angular component template
