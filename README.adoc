@@ -41,16 +41,23 @@ HTTP Client. You'll present this data using an Angular component.
 
 https://angular.io[Angular^] is a framework for creating interactive web applications.
 Angular applications are written in HTML, CSS, and
-https://typescriptlang.org[TypeScript^], a variant of JavaScript. Angular's template
-engine makes it easy to display and manipulate data in an intuitive manner, allowing
-you to quickly build a user interface for your REST services.
+https://typescriptlang.org[TypeScript^], a variant of JavaScript. Angular helps you
+create responsive, intuitive applications that download once and run as a single web
+page. Consuming REST services with your Angular application allows you to request
+only the data and operations you need, minimizing loading times.
 
 The REST service that provides the artists and albums resource was written for you in
 advance and responds with the [hotspot]`artists.json`.
 
 The Angular application has been created and configured for you in the `frontend`
-directory. It contains the default starter page. Angular applications must be
-compiled. The Angular compilation step has been configured as part of the Maven build.
+directory. It contains the default starter application. There are many files that make
+up an Angular application, but you only need to edit a few to consume the REST service
+and display its data.
+
+Angular applications must be compiled before they can be used. The Angular compilation
+step has been configured as part of the Maven build. You can use the `start` folder of
+this guide as a template for getting started with your own applications built on
+Angular and Open Liberty.
 
 artists.json
 [source, json, linenums, role="code_column"]
@@ -133,8 +140,9 @@ include::finish/src/main/frontend/src/app/app.module.ts[tags=**]
 
 Angular applications consist of modules, which are groups of classes that
 perform a specific function. The Angular framework provides its own modules
-for applications to use. One of these, the HTTP Client module, includes the
-classes you need to consume a RESTful API from your application.
+for applications to use. One of these, the HTTP Client module, includes convenience
+classes that will make it easier and quicker for you to consume a RESTful API from
+your application.
 
 Your application is organized into a module, called the root module and defined in
 [hotspot]`app.module.ts`. You must import the HTTP Client module into your module
@@ -166,7 +174,7 @@ include::finish/src/main/frontend/src/app/app.component.ts[tags=**]
 First, import two classes you'll need for the service: [hotspot=2]`HttpClient` and
 [hotspot=3]`Injectable`.
 
-Next, define the [hotspot=5-20]`ArtistsService` class. You can do this in a separate
+Next, define the [hotspot=5-19]`ArtistsService` class. You can do this in a separate
 file, or in the same file as the component. The class is annotated
 [hotspot=5]`@Injectable` so instances can be provided to other classes
 that need to use it.
@@ -176,34 +184,42 @@ request data from the REST API. It contains a constant [hotspot=9]`ARTISTS_URL` 
 points to the API endpoint it will request data from. Finally, it implements a method
 [hotspot=11-19]`fetchArtists()` that makes the request and returns the result.
 
-To obtain the data for display on the page, [hotspot=11-19]`fetchArtists()` tries to use the
+To obtain the data for display on the page, [hotspot=11-18]`fetchArtists()` tries to use the
 injected [hotspot=13]`http` instance to perform a `GET` HTTP request to the
 [hotspot=9]`ARTISTS_URL` and returning the result. If an error occurs, it prints the
 message of the error to the console.
 
-[hotspot=11-19]`fetchArtists()` uses a feature of Javascript called
+[hotspot=11-18]`fetchArtists()` uses a feature of Javascript called
 [hotspot=11]`async` and [hotspot=13]`await` to make the request and receive the
 response without preventing the application from working while it waits. In order to be
 compatible with this feature, the result of the [hotspot=13]`HttpClient.get()` method
 must be converted to a Promise using [hotspot=13]`toPromise()`.
 
-Finally, update the [hotspot=22-37]`AppComponent` class to use this service.
+Finally, update the [hotspot=21-37]`AppComponent` class to use this service.
 
-Add a [hotspot=25]`providers` property to the [hotspot=22-27]`@Component` annotation to
-indicate that this component provides the [hotspot=5-18]`ArtistsService` to the rest of
+Add a [hotspot=24]`providers` property to the [hotspot=21-26]`@Component` annotation to
+indicate that this component provides the [hotspot=5-19]`ArtistsService` to the rest of
 the application.
 
-Create a class member [hotspot=29]`artists` of type `any[]` and initialize it to an
+Components have a lifecycle managed by Angular. When Angular displays, updates,
+or removes a component, it calls a specific function on the component called a
+lifecycle hook, so the component can execute code in response to this event. You will
+respond to the [hotspot=27]`OnInit` event via the [hotspot=32]`ngOnInit` method to fetch
+and populate your template with data when the component is initialized for display. Add
+an import of the [hotspot=1]`OnInit` interface from the[hotspot=1]`@angular/core`
+package. Update the [hotspot=27]`AppComponent` class declaration to implement the
+[hotspot=27]`OnInit` interface.
+
+Create a class member [hotspot=28]`artists` of type `any[]` and initialize it to an
 empty array. This will hold the artists retrieved from the service so the template can
 display them.
 
-Inject an instance of the [hotspot=31]`ArtistsService` class into the constructor. In
-[hotspot=33-37]`ngOnInit`, the method called when a component is ready to be displayed,
-use the [hotspot=34]`artistsService` instance to request the artists data. Since
-[hotspot=11-19]`fetchArtists()` is an `async` function, it will return a Promise. To
-retrieve the data from the request, call [hotspot=34-36]`then()` on the promise and
-provide a function that will take in the data and store it to the [hotspot=28]`artists` class
-member.
+Inject an instance of the [hotspot=30]`ArtistsService` class into the constructor. In
+[hotspot=32-36]`ngOnInit`, use the [hotspot=33]`artistsService` instance to request the
+artists data. Since [hotspot=11-18]`fetchArtists()` is an `async` function, it will
+return a Promise. To retrieve the data from the request, call [hotspot=33-35]`then()`
+on the promise and provide a function that will take in the data and store it to the
+[hotspot=28]`artists` class member.
 
 == Creating the Angular component template
 
@@ -228,15 +244,8 @@ iterate over all artists. The `artists` variable is bound to the `artists` membe
 the component. Use the same strategy to iterate over each [hotspot=3]`album` for the
 artist.
 
-After everything is set up, if you have not started the REST service already, build
-and start both the REST service and the frontend by running the following command:
-[role='command']
-```
-mvn install liberty:start-server
-```
-
-If the REST service is already running, compile only the frontend by running the
-following command:
+The Open Liberty server is already started, and the REST service is running. You can
+recompile the frontend by running the following command:
 [role='command']
 ```
 mvn generate-resources

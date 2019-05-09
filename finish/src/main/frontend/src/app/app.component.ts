@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ArtistsService {
   constructor(private http: HttpClient) { }
 
-  private static ARTISTS_URL = 'http://localhost:9080/artists';
+  private static ARTISTS_URL = '/artists';
 
   async fetchArtists() {
     try {
@@ -24,7 +24,7 @@ export class ArtistsService {
   providers: [ ArtistsService ],
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   artists: any[] = [];
 
   constructor(private artistsService: ArtistsService) { }
