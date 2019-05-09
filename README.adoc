@@ -182,7 +182,7 @@ that need to use it.
 The class injects an instance of the [hotspot=7]`HttpClient` class which it will use to
 request data from the REST API. It contains a constant [hotspot=9]`ARTISTS_URL` which
 points to the API endpoint it will request data from. Finally, it implements a method
-[hotspot=11-19]`fetchArtists()` that makes the request and returns the result.
+[hotspot=11-18]`fetchArtists()` that makes the request and returns the result.
 
 To obtain the data for display on the page, [hotspot=11-18]`fetchArtists()` tries to use the
 injected [hotspot=13]`http` instance to perform a `GET` HTTP request to the
@@ -206,7 +206,7 @@ or removes a component, it calls a specific function on the component called a
 lifecycle hook, so the component can execute code in response to this event. You will
 respond to the [hotspot=27]`OnInit` event via the [hotspot=32]`ngOnInit` method to fetch
 and populate your template with data when the component is initialized for display. Add
-an import of the [hotspot=1]`OnInit` interface from the[hotspot=1]`@angular/core`
+an import of the [hotspot=1]`OnInit` interface from the [hotspot=1]`@angular/core`
 package. Update the [hotspot=27]`AppComponent` class declaration to implement the
 [hotspot=27]`OnInit` interface.
 
