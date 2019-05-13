@@ -14,8 +14,8 @@
 :page-permalink: /guides/{projectid}
 :page-releasedate: 2019-04-26
 :page-related-guides: ['rest-intro', 'rest-client-java']
-:page-seo-description: Find out how to consume a REST service with Angular on OpenLiberty
-:page-seo-title: Consuming a REST service
+:page-seo-title: Consuming RESTful web services with Angular
+:page-seo-description: A tutorial on how to consume your microservices with Angular
 :page-tags: ['Java EE']
 :common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/master
 :source-highlighter: prettify
@@ -99,7 +99,7 @@ mvn install liberty:start-server
 After you start the server, you can find your artist JSON at
 the following URL: http://localhost:9080/artists[http://localhost:9080/artists^].
 
-You can rebuild the frontend at any time. To do so, run Maven with the
+You can rebuild the front end at any time. To do so, run Maven with the
 `generate-resources` goal:
 [role='command']
 ----
@@ -107,7 +107,7 @@ mvn generate-resources
 ----
 
 Any local changes to your TypeScript and HTML are picked up when you build the
-frontend. After you start the Open Liberty server, you do not need to restart it.
+front end. After you start the Open Liberty server, you don't need to restart it.
 
 
 // =================================================================================================
@@ -121,7 +121,7 @@ Navigate to the `start` directory to begin.
 Your application will need some way of communicating with RESTful web services in order
 to retrieve their resources. In the case of this guide, your application will need to
 communicate with the artists service to retrieve the artists JSON. While there are
-a variety of ways of doing this, Angular contains a built-in HTTP Client module
+various ways of doing this, Angular contains a built-in HTTP Client module
 that you can use.
 
 Begin by importing the Angular HTTP Client module into your application module.
@@ -156,7 +156,7 @@ include [hotspot=13]`HttpClientModule`.
 
 You will create the component in your application used to acquire and display data from
 the REST API. This file will contain two classes: the service, which will handle data
-access, and the component itself, which will handle presenting the data.The default
+access, and the component itself, which will handle presenting the data. The default
 Angular application already contains a component.
 
 [role="code_command hotspot", subs="quotes"]
@@ -179,7 +179,7 @@ file, or in the same file as the component. The class is annotated
 [hotspot=5]`@Injectable` so instances can be provided to other classes
 that need to use it.
 
-The class injects an instance of the [hotspot=7]`HttpClient` class which it will use to
+The class injects an instance of the [hotspot=7]`HttpClient` class, which it will use to
 request data from the REST API. It contains a constant [hotspot=9]`ARTISTS_URL` which
 points to the API endpoint it will request data from. Finally, it implements a method
 [hotspot=11-18]`fetchArtists()` that makes the request and returns the result.
@@ -203,7 +203,7 @@ the application.
 
 Components have a lifecycle managed by Angular. When Angular displays, updates,
 or removes a component, it calls a specific function on the component called a
-lifecycle hook, so the component can execute code in response to this event. You will
+lifecycle hook, so the component can run code in response to this event. You will
 respond to the [hotspot=27]`OnInit` event via the [hotspot=32]`ngOnInit` method to fetch
 and populate your template with data when the component is initialized for display. Add
 an import of the [hotspot=1]`OnInit` interface from the [hotspot=1]`@angular/core`
@@ -245,7 +245,7 @@ the component. Use the same strategy to iterate over each [hotspot=3]`album` for
 artist.
 
 The Open Liberty server is already started, and the REST service is running. You can
-recompile the frontend by running the following command:
+recompile the front end by running the following command:
 [role='command']
 ```
 mvn generate-resources
@@ -267,7 +267,7 @@ dj wrote 0 albums:
 
 == Testing the Angular client
 
-No explicit code directly uses the consumed artist JSON, so you do not need to write
+No explicit code directly uses the consumed artist JSON, so you don't need to write
 any test cases for this guide.
 
 Whenever you change and build your Angular implementation, the application root at
@@ -287,7 +287,7 @@ running the following command:
 mvn liberty:stop-server
 ```
 
-Although this guide did not teach you how to build logic, you will likely build logic
+Although this guide didn't teach you how to build logic, you will likely build logic
 when you develop your own applications, and testing will become a crucial part of your
 development lifecycle. If you need to write test cases, follow the official unit
 testing and end-to-end testing documentation on the

@@ -10,7 +10,7 @@ export class ArtistsService {
 
   async fetchArtists() {
     try {
-      let data: any = await this.http.get(ArtistsService.ARTISTS_URL).toPromise();
+      const data: any = await this.http.get(ArtistsService.ARTISTS_URL).toPromise();
       return data;
     } catch (error) {
       console.error(`Error occurred: ${error}`);
