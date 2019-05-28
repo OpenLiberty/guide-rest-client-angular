@@ -181,11 +181,11 @@ application.
 Create the entire [hotspot=5-19]`ArtistsService` class. Add the [hotspot=2]`HttpClient`
 and [hotspot=3]`Injectable` import statements at the top.
 
-The file imports the [hotspot=2]`HttpClient` and [hotspot=3]`Injectable`.
+The file imports the [hotspot=2]`HttpClient` class and [hotspot=3]`Injectable` decorator.
 
 The [hotspot=5-19]`ArtistsService` class is defined. While it shares the same file as
 the component class [hotspot=27]`AppComponent`, it can also be defined in its own file.
-The class is annotated [hotspot=5]`@Injectable` so instances of it can be provided to
+The class is annotated by [hotspot=5]`@Injectable` so instances of it can be provided to
 other classes anywhere in the application.
 
 The class injects an instance of the [hotspot=7]`HttpClient` class, which it will use to
@@ -270,7 +270,7 @@ include::finish/src/main/frontend/src/app/app.component.html[tags=**]
 The template contains a [hotspot=1]`div` that is enumerated using `*ngFor`. The
 `artists` variable is bound to the `artists` member of the component. The div itself
 and all elements contained within it are repeated for each artist, and the
-[hotspot=2]`{{ artist.name }}` and `{{ artist.albums.length }}` placeholders are
+[hotspot=2]`{{ artist.name }}` and [hotspot=2]`{{ artist.albums.length }}` placeholders are
 populated with the information from each artist. The same strategy is used to display
 each [hotspot=3]`album` by each artist.
 
