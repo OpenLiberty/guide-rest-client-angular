@@ -12,11 +12,10 @@
 :page-essential: false
 :page-guide-catagory: none
 :page-permalink: /guides/{projectid}
-:page-releasedate: 2019-04-26
+:page-releasedate: 2019-06-21
 :page-related-guides: ['rest-intro', 'rest-client-java']
 :page-seo-title: Consuming RESTful web services with Angular
-:page-seo-description: A tutorial on how to consume your microservices with Angular
-:page-tags: ['Java EE']
+:page-seo-description: A tutorial on how to consume microservices with the Angular framework
 :common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/master
 :source-highlighter: prettify
 :guide-author: Open Liberty
@@ -170,7 +169,7 @@ include::finish/src/main/frontend/src/app/app.component.ts[tags=**]
 Services are classes in Angular that are designed to share their functionality across
 the entire application. A good service performs only one function and does it well. In
 this case, `ArtistsService` will handle requesting artists data from the REST
-application.
+service.
 
 [role="code_command hotspot", subs="quotes"]
 ----
@@ -198,7 +197,7 @@ injected [hotspot=13]`http` instance to perform a `GET` HTTP request to the
 [hotspot=9]`ARTISTS_URL` and returning the result. If an error occurs, it prints the
 message of the error to the console.
 
-[hotspot=11-18]`fetchArtists()` uses a feature of Javascript called
+[hotspot=11-18]`fetchArtists()` uses a feature of JavaScript called
 [hotspot=11]`async` and [hotspot=13]`await` to make the request and receive the
 response without preventing the application from working while it waits. In order to be
 compatible with this feature, the result of the [hotspot=13]`HttpClient.get()` method
@@ -207,7 +206,7 @@ must be converted to a Promise using [hotspot=13]`toPromise()`.
 === Defining a component to consume a service
 
 Components are the basic building block of Angular application user interfaces.
-Components are made up of a Typescript class annotated with the
+Components are made up of a TypeScript class annotated with the
 [hotspot=21-26]`@Component` annotation and the HTML template file (specified by
 [hotspot=23]`templateUrl`) and CSS style files (specified by [hotspot=25]`styleUrls`.) 
 
