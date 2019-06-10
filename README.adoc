@@ -177,31 +177,36 @@ service.
 `src/main/frontend/src/app/app.component.ts`
 ----
 [role="edit_command_text"]
-Create the entire [hotspot=5-19]`ArtistsService` class. Add the [hotspot=2]`HttpClient`
+Create the entire [hotspot=6-19]`ArtistsService` class. Add the [hotspot=2]`HttpClient`
 and [hotspot=3]`Injectable` import statements at the top.
 
 The file imports the [hotspot=2]`HttpClient` class and [hotspot=3]`Injectable` decorator.
 
-The [hotspot=5-19]`ArtistsService` class is defined. While it shares the same file as
-the component class [hotspot=27]`AppComponent`, it can also be defined in its own file.
+The [hotspot=6-19]`ArtistsService` class is defined. While it shares the same file as
+the component class [hotspot=27-37]`AppComponent`, it can also be defined in its own file.
 The class is annotated by [hotspot=5]`@Injectable` so instances of it can be provided to
 other classes anywhere in the application.
 
 The class injects an instance of the [hotspot=7]`HttpClient` class, which it will use to
 request data from the REST API. It contains a constant [hotspot=9]`ARTISTS_URL` which
-points to the API endpoint it will request data from. Finally, it implements a method
-[hotspot=11-18]`fetchArtists()` that makes the request and returns the result.
+points to the API endpoint it will request data from. The URL does not contain a
+hostname because the artists API endpoint is accessible from the same host as the
+Angular application, but you can send requests to external APIs by specifying the full
+URL. Finally, it implements a method [hotspot=11-18]`fetchArtists()` that makes the
+request and returns the result.
 
-To obtain the data for display on the page, [hotspot=11-18]`fetchArtists()` tries to use the
-injected [hotspot=13]`http` instance to perform a `GET` HTTP request to the
-[hotspot=9]`ARTISTS_URL` and returning the result. If an error occurs, it prints the
-message of the error to the console.
+To obtain the data for display on the page, [hotspot=11-18]`fetchArtists()` tries to
+use the injected [hotspot=13]`http` instance to perform a `GET` HTTP request to the
+[hotspot=9]`ARTISTS_URL` and, if successful, returns the result. If an error occurs, it
+prints the message of the error to the console.
 
 [hotspot=11-18]`fetchArtists()` uses a feature of JavaScript called
 [hotspot=11]`async` and [hotspot=13]`await` to make the request and receive the
 response without preventing the application from working while it waits. In order to be
 compatible with this feature, the result of the [hotspot=13]`HttpClient.get()` method
-must be converted to a Promise using [hotspot=13]`toPromise()`.
+must be converted to a Promise using [hotspot=13]`toPromise()`. A Promise is how
+JavaScript represents the state of an asynchronous operation. If you want to learn
+more, check out https://promisejs.org for an introduction.
 
 === Defining a component to consume a service
 
@@ -210,7 +215,7 @@ Components are made up of a TypeScript class annotated with the
 [hotspot=21-26]`@Component` annotation and the HTML template file (specified by
 [hotspot=23]`templateUrl`) and CSS style files (specified by [hotspot=25]`styleUrls`.) 
 
-Update the [hotspot=21-37]`AppComponent` class to use the artists service to fetch the
+Update the [hotspot=27-37]`AppComponent` class to use the artists service to fetch the
 artists data and save it so the component can display it.
 
 [role="code_command hotspot", subs="quotes"]
@@ -219,21 +224,22 @@ artists data and save it so the component can display it.
 `src/main/frontend/src/app/app.component.ts`
 ----
 [role="edit_command_text"]
-Replace the entire [hotspot=21-37]`AppComponent` class as shown. Add
+Replace the entire [hotspot=27-37]`AppComponent` class as shown. Add
 [hotspot=1]`OnInit` to the list of imported classes at the top.
 
 The [hotspot=24]`providers` property on the [hotspot=21-26]`@Component` annotation
-indicates that this component provides the [hotspot=5-19]`ArtistsService` to other
+indicates that this component provides the [hotspot=6-19]`ArtistsService` to other
 classes in the application.
 
-`AppComponent` implements [hotspot=27]`OnInit`, which is a special interface called a 
-lifecycle hook. When Angular displays, updates, or removes a component, it calls a
-specific function on the component&mdash;the lifecycle hook&mdash;so the component can
-run code in response to this event. This component responds to the [hotspot=27]`OnInit`
-event via the [hotspot=32]`ngOnInit` method to fetch and populate its template with
-data when the component is initialized for display. The file imports the
-[hotspot=1]`OnInit` interface from the [hotspot=1]`@angular/core` package. The
-[hotspot=27]`AppComponent` class implements the [hotspot=27]`OnInit` interface.
+[hotspot=27-37]`AppComponent` implements [hotspot=27]`OnInit`, which is a special
+interface called a lifecycle hook. When Angular displays, updates, or removes a
+component, it calls a specific function on the component&mdash;the lifecycle
+hook&mdash;so the component can run code in response to this event. This component
+responds to the [hotspot=27]`OnInit` event via the [hotspot=32]`ngOnInit` method to
+fetch and populate its template with data when the component is initialized for
+display. The file imports the [hotspot=1]`OnInit` interface from the
+[hotspot=1]`@angular/core` package. The [hotspot=27]`AppComponent` class implements the
+[hotspot=27]`OnInit` interface.
 
 [hotspot=28]`artists` is a class member of type `any[]` that starts out as an empty
 array. It holds the artists retrieved from the service so the template can
@@ -267,7 +273,7 @@ include::finish/src/main/frontend/src/app/app.component.html[tags=**]
 ----
 
 The template contains a [hotspot=1]`div` that is enumerated using `*ngFor`. The
-`artists` variable is bound to the `artists` member of the component. The div itself
+`artist` variable is bound to the `artists` member of the component. The div itself
 and all elements contained within it are repeated for each artist, and the
 [hotspot=2]`{{ artist.name }}` and [hotspot=2]`{{ artist.albums.length }}` placeholders are
 populated with the information from each artist. The same strategy is used to display
