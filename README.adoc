@@ -206,14 +206,14 @@ response without preventing the application from working while it waits. In orde
 compatible with this feature, the result of the [hotspot=13]`HttpClient.get()` method
 must be converted to a Promise using [hotspot=13]`toPromise()`. A Promise is how
 JavaScript represents the state of an asynchronous operation. If you want to learn
-more, check out https://promisejs.org for an introduction.
+more, check out https://promisejs.org[^] for an introduction.
 
 === Defining a component to consume a service
 
 Components are the basic building block of Angular application user interfaces.
 Components are made up of a TypeScript class annotated with the
 [hotspot=21-26]`@Component` annotation and the HTML template file (specified by
-[hotspot=23]`templateUrl`) and CSS style files (specified by [hotspot=25]`styleUrls`.) 
+[hotspot=23]`templateUrl`) and CSS style files (specified by [hotspot=25]`styleUrls`.)
 
 Update the [hotspot=27-37]`AppComponent` class to use the artists service to fetch the
 artists data and save it so the component can display it.
@@ -238,7 +238,7 @@ hook&mdash;so the component can run code in response to this event. This compone
 responds to the [hotspot=27]`OnInit` event via the [hotspot=32]`ngOnInit` method to
 fetch and populate its template with data when the component is initialized for
 display. The file imports the [hotspot=1]`OnInit` interface from the
-[hotspot=1]`@angular/core` package. The [hotspot=27]`AppComponent` class implements the
+[hotspot=1]`@angular/core` package. The [hotspot=27-37]`AppComponent` class implements the
 [hotspot=27]`OnInit` interface.
 
 [hotspot=28]`artists` is a class member of type `any[]` that starts out as an empty
