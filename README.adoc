@@ -128,7 +128,7 @@ Begin by importing the Angular HTTP Client module into the root module.
 app.module.ts
 [source, javascript, linenums, role="code_column"]
 ----
-include::finish/src/main/frontend/src/app/app.module.ts[tags=**]
+include::finish/src/main/frontend/src/app/app.module.ts[]
 ----
 
 Angular applications consist of modules, which are groups of classes that
@@ -147,9 +147,9 @@ module in order for its classes to be accessible from the application's code.
 `src/main/frontend/src/app/app.module.ts`
 ----
 [role="edit_command_text"]
-Import the [hotspot=3]`HttpClientModule` class into the file, then update the
-[hotspot=11-14]`imports` array within the [hotspot=7-17]`@NgModule` declaration to
-include [hotspot=13]`HttpClientModule`.
+Import the [hotspot=importHttpClientModule]`HttpClientModule` class into the file, then update the
+[hotspot=importsArray]`imports` array within the [hotspot=atNgModule]`@NgModule` declaration to
+include [hotspot=httpClientModule]`HttpClientModule`.
 
 == Creating the Angular component
 
@@ -161,7 +161,7 @@ data. The provided Angular application already contains a component.
 app.component.ts
 [source, javascript, linenums, role="code_column"]
 ----
-include::finish/src/main/frontend/src/app/app.component.ts[tags=**]
+include::finish/src/main/frontend/src/app/app.component.ts[]
 ----
 
 === Defining a service to fetch data
@@ -177,34 +177,34 @@ service.
 `src/main/frontend/src/app/app.component.ts`
 ----
 [role="edit_command_text"]
-Create the entire [hotspot=6-19]`ArtistsService` class. Add the [hotspot=2]`HttpClient`
-and [hotspot=3]`Injectable` import statements at the top.
+Create the entire [hotspot=artistsServiceClass]`ArtistsService` class. Add the [hotspot=importHttpClient]`HttpClient`
+and [hotspot=importInjectable]`Injectable` import statements at the top.
 
-The file imports the [hotspot=2]`HttpClient` class and [hotspot=3]`Injectable` decorator.
+The file imports the [hotspot=importHttpClient]`HttpClient` class and [hotspot=importInjectable]`Injectable` decorator.
 
-The [hotspot=6-19]`ArtistsService` class is defined. While it shares the same file as
-the component class [hotspot=27-37]`AppComponent`, it can also be defined in its own file.
-The class is annotated by [hotspot=5]`@Injectable` so instances of it can be provided to
+The [hotspot=artistsServiceClass]`ArtistsService` class is defined. While it shares the same file as
+the component class [hotspot=appComponentClass]`AppComponent`, it can also be defined in its own file.
+The class is annotated by [hotspot=atInjectable]`@Injectable` so instances of it can be provided to
 other classes anywhere in the application.
 
-The class injects an instance of the [hotspot=7]`HttpClient` class, which it will use to
-request data from the REST API. It contains a constant [hotspot=9]`ARTISTS_URL` which
+The class injects an instance of the [hotspot=httpClientInstance]`HttpClient` class, which it will use to
+request data from the REST API. It contains a constant [hotspot=artistsUrl]`ARTISTS_URL` which
 points to the API endpoint it will request data from. The URL does not contain a
 hostname because the artists API endpoint is accessible from the same host as the
 Angular application, but you can send requests to external APIs by specifying the full
-URL. Finally, it implements a method [hotspot=11-18]`fetchArtists()` that makes the
+URL. Finally, it implements a method [hotspot=fetchArtistsMethod]`fetchArtists()` that makes the
 request and returns the result.
 
-To obtain the data for display on the page, [hotspot=11-18]`fetchArtists()` tries to
-use the injected [hotspot=13]`http` instance to perform a `GET` HTTP request to the
-[hotspot=9]`ARTISTS_URL` and, if successful, returns the result. If an error occurs, it
+To obtain the data for display on the page, [hotspot=fetchArtistsMethod]`fetchArtists()` tries to
+use the injected [hotspot=httpInstanceAndAwaitFeatureAndHttpGetAndToPromise]`http` instance to perform a `GET` HTTP request to the
+[hotspot=artistsUrl]`ARTISTS_URL` and, if successful, returns the result. If an error occurs, it
 prints the message of the error to the console.
 
-[hotspot=11-18]`fetchArtists()` uses a feature of JavaScript called
-[hotspot=11]`async` and [hotspot=13]`await` to make the request and receive the
+[hotspot=fetchArtistsMethod]`fetchArtists()` uses a feature of JavaScript called
+[hotspot=asyncFeature]`async` and [hotspot=httpInstanceAndAwaitFeatureAndHttpGetAndToPromise]`await` to make the request and receive the
 response without preventing the application from working while it waits. In order to be
-compatible with this feature, the result of the [hotspot=13]`HttpClient.get()` method
-must be converted to a Promise using [hotspot=13]`toPromise()`. A Promise is how
+compatible with this feature, the result of the [hotspot=httpInstanceAndAwaitFeatureAndHttpGetAndToPromise]`HttpClient.get()` method
+must be converted to a Promise using [hotspot=httpInstanceAndAwaitFeatureAndHttpGetAndToPromise]`toPromise()`. A Promise is how
 JavaScript represents the state of an asynchronous operation. If you want to learn
 more, check out https://promisejs.org[^] for an introduction.
 
@@ -212,10 +212,10 @@ more, check out https://promisejs.org[^] for an introduction.
 
 Components are the basic building block of Angular application user interfaces.
 Components are made up of a TypeScript class annotated with the
-[hotspot=21-26]`@Component` annotation and the HTML template file (specified by
-[hotspot=23]`templateUrl`) and CSS style files (specified by [hotspot=25]`styleUrls`.)
+[hotspot=atComponent]`@Component` annotation and the HTML template file (specified by
+[hotspot=templateUrl]`templateUrl`) and CSS style files (specified by [hotspot=styleUrls]`styleUrls`.)
 
-Update the [hotspot=27-37]`AppComponent` class to use the artists service to fetch the
+Update the [hotspot=appComponentClass]`AppComponent` class to use the artists service to fetch the
 artists data and save it so the component can display it.
 
 [role="code_command hotspot", subs="quotes"]
@@ -224,34 +224,35 @@ artists data and save it so the component can display it.
 `src/main/frontend/src/app/app.component.ts`
 ----
 [role="edit_command_text"]
-Replace the entire [hotspot=27-37]`AppComponent` class as shown. Add
-[hotspot=1]`OnInit` to the list of imported classes at the top.
+Replace the entire [hotspot=appComponentClass]`AppComponent` class as shown. Add
+[hotspot=importOnInitAndAngularCorePackage]`OnInit` to the list of imported classes at the top.
 
-The [hotspot=24]`providers` property on the [hotspot=21-26]`@Component` annotation
-indicates that this component provides the [hotspot=6-19]`ArtistsService` to other
+The [hotspot=providersProperty]`providers` property on the [hotspot=atComponent]`@Component` annotation
+indicates that this component provides the [hotspot=artistsServiceClass]`ArtistsService` to other
 classes in the application.
 
-[hotspot=27-37]`AppComponent` implements [hotspot=27]`OnInit`, which is a special
+[hotspot=appComponentClass]`AppComponent` implements [hotspot=onInitInterface]`OnInit`, which is a special
 interface called a lifecycle hook. When Angular displays, updates, or removes a
 component, it calls a specific function on the component&mdash;the lifecycle
 hook&mdash;so the component can run code in response to this event. This component
-responds to the [hotspot=27]`OnInit` event via the [hotspot=32]`ngOnInit` method to
+responds to the [hotspot=onInitInterface]`OnInit` event via the [hotspot=ngOnInitMethod]`ngOnInit` method to
 fetch and populate its template with data when the component is initialized for
-display. The file imports the [hotspot=1]`OnInit` interface from the
-[hotspot=1]`@angular/core` package. The [hotspot=27-37]`AppComponent` class implements the
-[hotspot=27]`OnInit` interface.
+display. The file imports the [hotspot=importOnInitAndAngularCorePackage]`OnInit` interface from the
+[hotspot=importOnInitAndAngularCorePackage]`@angular/core` package.
+The [hotspot=appComponentClass]`AppComponent` class implements the
+[hotspot=onInitInterface]`OnInit` interface.
 
-[hotspot=28]`artists` is a class member of type `any[]` that starts out as an empty
+[hotspot=artistsClassMember]`artists` is a class member of type `any[]` that starts out as an empty
 array. It holds the artists retrieved from the service so the template can
 display them.
 
-An instance of the [hotspot=30]`ArtistsService` class is injected into the constructor
-and is accessible by any function defined in the class. The [hotspot=32-36]`ngOnInit`
-function uses the [hotspot=33]`artistsService` instance to request the artists data.
-Since [hotspot=11-18]`fetchArtists()` is an `async` function, it returns a Promise. To
-retrieve the data from the request, [hotspot=32-36]`ngOnInit` calls
-[hotspot=33-35]`then()` on the Promise and provides a function that takes in the data
-and stores it to the [hotspot=28]`artists` class member.
+An instance of the [hotspot=artistsServiceInstanceDeclaration]`ArtistsService` class is injected into the constructor
+and is accessible by any function defined in the class. The [hotspot=ngOnInitMethod]`ngOnInit`
+function uses the [hotspot=artistsServiceInstance]`artistsService` instance to request the artists data.
+Since [hotspot=fetchArtistsMethod]`fetchArtists()` is an `async` function, it returns a Promise. To
+retrieve the data from the request, [hotspot=ngOnInitMethod]`ngOnInit` calls
+[hotspot=thenClause]`then()` on the Promise and provides a function that takes in the data
+and stores it to the [hotspot=artistsClassMember]`artists` class member.
 
 == Creating the Angular component template
 
@@ -269,15 +270,16 @@ the artists data with formatting.
 app.component.html
 [source, html, linenums, role="code_column"]
 ----
-include::finish/src/main/frontend/src/app/app.component.html[tags=**]
+include::finish/src/main/frontend/src/app/app.component.html[]
 ----
 
-The template contains a [hotspot=1]`div` that is enumerated using `*ngFor`. The
+The template contains a [hotspot=artistsDiv]`div` that is enumerated using `*ngFor`. The
 `artist` variable is bound to the `artists` member of the component. The div itself
 and all elements contained within it are repeated for each artist, and the
-[hotspot=2]`{{ artist.name }}` and [hotspot=2]`{{ artist.albums.length }}` placeholders are
+[hotspot=artistNameAndAlbumsLengthPlaceholders]`{{ artist.name }}` and
+[hotspot=artistNameAndAlbumsLengthPlaceholders]`{{ artist.albums.length }}` placeholders are
 populated with the information from each artist. The same strategy is used to display
-each [hotspot=3]`album` by each artist.
+each [hotspot=albumDiv]`album` by each artist.
 
 The Open Liberty server is already started, and the REST service is running. You can
 recompile the front end by running the following command:
