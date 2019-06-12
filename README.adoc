@@ -324,10 +324,10 @@ running the following command:
 mvn liberty:stop-server
 ```
 
-Although this guide didn't teach you how to build logic, you will likely build logic
-when you develop your own applications, and testing will become a crucial part of your
-development lifecycle. If you need to write test cases, follow the official unit
-testing and end-to-end testing documentation on the
+Although the Angular application this guide showed you how to build is very simple,
+when you build more complex Angular applications, testing will become a crucial part
+of your development lifecycle. If you need to write test cases, follow the official
+unit testing and end-to-end testing documentation on the
 https://angular.io/guide/testing[official Angular page^].
 
 
