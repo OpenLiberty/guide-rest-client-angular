@@ -177,7 +177,9 @@ service.
 `src/main/frontend/src/app/app.component.ts`
 ----
 [role="edit_command_text"]
-Create the entire [hotspot=artistsServiceClass]`ArtistsService` class. Add the [hotspot=importHttpClient]`HttpClient`
+Create the entire [hotspot=artistsServiceClass]`ArtistsService` class
+with the [hotspot=atInjectable]`@Injectable` annotation.
+Add the [hotspot=importHttpClient]`HttpClient`
 and [hotspot=importInjectable]`Injectable` import statements at the top.
 
 The file imports the [hotspot=importHttpClient]`HttpClient` class and [hotspot=importInjectable]`Injectable` decorator.
@@ -224,8 +226,8 @@ artists data and save it so the component can display it.
 `src/main/frontend/src/app/app.component.ts`
 ----
 [role="edit_command_text"]
-Replace the entire [hotspot=appComponentClass]`AppComponent` class as shown. Add
-[hotspot=importOnInitAndAngularCorePackage]`OnInit` to the list of imported classes at the top.
+Replace the entire [hotspot=appComponentClass]`AppComponent` class with the [hotspot=atComponent]`@Component` annotation.
+Add [hotspot=importOnInitAndAngularCorePackage]`OnInit` to the list of imported classes at the top.
 
 The [hotspot=providersProperty]`providers` property on the [hotspot=atComponent]`@Component` annotation
 indicates that this component provides the [hotspot=artistsServiceClass]`ArtistsService` to other
