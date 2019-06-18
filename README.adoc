@@ -167,7 +167,7 @@ include::finish/src/main/frontend/src/app/app.component.ts[]
 === Defining a service to fetch data
 
 Services are classes in Angular that are designed to share their functionality across
-entire applications. A good service performs only one function and it performs this
+entire applications. A good service performs only one function, and it performs this
 function well. In this case, the `ArtistsService` class requests artists data from the
 REST service.
 
@@ -177,11 +177,12 @@ REST service.
 `src/main/frontend/src/app/app.component.ts`
 ----
 [role="edit_command_text"]
-Create the entire [hotspot=artistsServiceClass]`ArtistsService` class with the  [hotspot=atInjectable]`@Injectable` annotation. Add the
+Create the entire [hotspot=artistsServiceClass]`ArtistsService` class with the
+[hotspot=atInjectable]`@Injectable` annotation. Add the
 [hotspot=importHttpClient]`HttpClient` and [hotspot=importInjectable]`Injectable`
 import statements at the top.
 
-The file imports the [hotspot=importHttpClient]`HttpClient` class and
+The file imports the [hotspot=importHttpClient]`HttpClient` class and the
 [hotspot=importInjectable]`Injectable` decorator.
 
 The [hotspot=artistsServiceClass]`ArtistsService` class is defined. While it shares the
@@ -210,7 +211,7 @@ called [hotspot=asyncFeature]`async`/
 receive responses without preventing the application from working while it waits. For
 the result of the
 [hotspot=httpInstanceAndAwaitFeatureAndHttpGetAndToPromise]`HttpClient.get()` method to
-be compatible with this feature, it must be converted to a Promise invoking its
+be compatible with this feature, it must be converted to a Promise by invoking its
 [hotspot=httpInstanceAndAwaitFeatureAndHttpGetAndToPromise]`toPromise()` method. A
 Promise is how JavaScript represents the state of an asynchronous operation. If you
 want to learn more, check out https://promisejs.org[^] for an introduction.
@@ -232,9 +233,10 @@ to fetch the artists data and save it so the component can display it.
 `src/main/frontend/src/app/app.component.ts`
 ----
 [role="edit_command_text"]
-Replace the entire [hotspot=appComponentClass]`AppComponent` class with the [hotspot=atComponent]`@Component` annotation.
-Add [hotspot=importOnInitAndAngularCorePackage]`OnInit` to the list of imported classes
-at the top.
+Replace the entire [hotspot=appComponentClass]`AppComponent` class with the
+[hotspot=atComponent]`@Component` annotation. Add
+[hotspot=importOnInitAndAngularCorePackage]`OnInit` to the list of imported classes at
+the top.
 
 The [hotspot=providersProperty]`providers` property on the
 [hotspot=atComponent]`@Component` annotation indicates that this component provides the
@@ -245,7 +247,7 @@ which is a special interface called a lifecycle hook. When Angular displays, upd
 or removes a component, it calls a specific function, the lifecycle hook, on the
 component so the component can run code in response to this event. This component
 responds to the [hotspot=onInitInterface]`OnInit` event via the
-[hotspot=ngOnInitMethod]`ngOnInit` method which fetches and populates the component's
+[hotspot=ngOnInitMethod]`ngOnInit` method, which fetches and populates the component's
 template with data when it is initialized for display. The file imports the
 [hotspot=importOnInitAndAngularCorePackage]`OnInit` interface from the
 [hotspot=importOnInitAndAngularCorePackage]`@angular/core` package.
