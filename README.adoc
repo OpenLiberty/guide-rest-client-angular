@@ -39,22 +39,22 @@ Angular applications are written in HTML, CSS, and
 https://www.typescriptlang.org[TypeScript^], a variant of JavaScript. Angular helps you
 create responsive and intuitive applications that download once and run as a single web
 page. Consuming REST services with your Angular application allows you to request
-only the data and operations you need, minimizing loading times.
+only the data and operations that you need, minimizing loading times.
 
-You'll learn how to access a REST service and deserialize the returned JSON that
+You will learn how to access a REST service and deserialize the returned JSON that
 contains a list of artists and their albums by using an Angular service and the Angular
-HTTP Client. You'll present this data using an Angular component.
+HTTP Client. You will then present this data using an Angular component.
 
 The REST service that provides the artists and albums resource was written for you in
 advance and responds with the [hotspot]`artists.json`.
 
-The Angular application has been created and configured for you in the `frontend`
+The Angular application was created and configured for you in the `frontend`
 directory. It contains the default starter application. There are many files that make
-up an Angular application, but you only need to edit a few to consume the REST service
-and display its data.
+up an Angular application, but you only need to edit only a few to consume the REST
+service and display its data.
 
 Angular applications must be compiled before they can be used. The Angular compilation
-step has been configured as part of the Maven build. You can use the `start` folder of
+step was configured as part of the Maven build. You can use the `start` folder of
 this guide as a template for getting started with your own applications built on
 Angular and Open Liberty.
 
@@ -64,8 +64,8 @@ artists.json
 include::finish/src/resources/artists.json[]
 ----
 
-You will implement an Angular client that consumes this JSON and displays its contents at the
-following URL: `\http://localhost:9080/app`.
+You will implement an Angular client that consumes this JSON and displays its contents
+at the `\http://localhost:9080/app` URL.
 
 To learn more about REST services and how you can write them, see
 https://openliberty.io/guides/rest-intro.html[Creating a RESTful web service^].
@@ -95,8 +95,8 @@ To start the REST service, navigate to the `start` directory and run the Maven
 mvn install liberty:start-server
 ----
 
-After you start the server, you can find your artist JSON at
-the following URL: http://localhost:9080/artists[http://localhost:9080/artists^].
+After you start the server, you can find your artist JSON at the
+http://localhost:9080/artists[http://localhost:9080/artists^] URL.
 
 You can rebuild the front end at any time. To do so, run Maven with the
 `generate-resources` goal:
@@ -117,11 +117,10 @@ front end. After you start the Open Liberty server, you don't need to restart it
 
 Navigate to the `start` directory to begin.
 
-Your application will need some way of communicating with RESTful web services in order
-to retrieve their resources. In the case of this guide, the provided Angular
-application will need to communicate with the artists service to retrieve the artists
-JSON. While there are various ways of doing this, Angular contains a built-in HTTP
-Client module that you can use.
+Your application needs a way to communicate with RESTful web services to retrieve their
+resources. In this case, the provided Angular application needs to communicate with the
+artists service to retrieve the artists JSON. While there are various ways to perform
+this task, Angular contains a built-in HTTP Client module that you can use.
 
 Begin by importing the Angular HTTP Client module into the root module.
 
@@ -132,14 +131,14 @@ include::finish/src/main/frontend/src/app/app.module.ts[]
 ----
 
 Angular applications consist of modules, which are groups of classes that
-perform a specific function. The Angular framework provides its own modules
-for applications to use. One of these, the HTTP Client module, includes convenience
-classes that will make it easier and quicker for you to consume a RESTful API from
-your application.
+perform specific functions. The Angular framework provides its own modules
+for applications to use. One of these modules, the HTTP Client module, includes
+convenience classes that make it easier and quicker for you to consume a RESTful API
+from your application.
 
-The provided application is organized into a module, called the root module and defined
-in [hotspot]`app.module.ts`. You must import the HTTP Client module into the root
-module in order for its classes to be accessible from the application's code.
+The provided application is organized into a module, called the root module, and
+defined in the [hotspot]`app.module.ts` file. You must import the HTTP Client module
+into the root module for its classes to be accessible from the application's code.
 
 [role="code_command hotspot", subs="quotes"]
 ----
@@ -147,15 +146,16 @@ module in order for its classes to be accessible from the application's code.
 `src/main/frontend/src/app/app.module.ts`
 ----
 [role="edit_command_text"]
-Import the [hotspot=importHttpClientModule]`HttpClientModule` class into the file, then update the
-[hotspot=importsArray]`imports` array within the [hotspot=atNgModule]`@NgModule` declaration to
-include [hotspot=httpClientModule]`HttpClientModule`.
+Import the [hotspot=importHttpClientModule]`HttpClientModule` class into the file, then
+update the [hotspot=importsArray]`imports` array within the
+[hotspot=atNgModule]`@NgModule` declaration to include
+[hotspot=httpClientModule]`HttpClientModule`.
 
 == Creating the Angular component
 
-You will need to create the component used in the application to acquire and display
-data from the REST API. The component file will contain two classes: the service, which
-will handle data access, and the component itself, which will handle presenting the
+You need to create the component that is used in the application to acquire and display
+data from the REST API. The component file contains two classes: the service, which
+handles data access, and the component itself, which handles the presentation of the
 data. The provided Angular application already contains a component.
 
 app.component.ts
@@ -167,9 +167,9 @@ include::finish/src/main/frontend/src/app/app.component.ts[]
 === Defining a service to fetch data
 
 Services are classes in Angular that are designed to share their functionality across
-the entire application. A good service performs only one function and does it well. In
-this case, `ArtistsService` will handle requesting artists data from the REST
-service.
+entire applications. A good service performs only one function, and it performs this
+function well. In this case, the `ArtistsService` class requests artists data from the
+REST service.
 
 [role="code_command hotspot", subs="quotes"]
 ----
@@ -177,48 +177,55 @@ service.
 `src/main/frontend/src/app/app.component.ts`
 ----
 [role="edit_command_text"]
-Create the entire [hotspot=artistsServiceClass]`ArtistsService` class
-with the [hotspot=atInjectable]`@Injectable` annotation.
-Add the [hotspot=importHttpClient]`HttpClient`
-and [hotspot=importInjectable]`Injectable` import statements at the top.
+Create the entire [hotspot=artistsServiceClass]`ArtistsService` class with the
+[hotspot=atInjectable]`@Injectable` annotation. Add the
+[hotspot=importHttpClient]`HttpClient` and [hotspot=importInjectable]`Injectable`
+import statements at the top.
 
-The file imports the [hotspot=importHttpClient]`HttpClient` class and [hotspot=importInjectable]`Injectable` decorator.
+The file imports the [hotspot=importHttpClient]`HttpClient` class and the
+[hotspot=importInjectable]`Injectable` decorator.
 
-The [hotspot=artistsServiceClass]`ArtistsService` class is defined. While it shares the same file as
-the component class [hotspot=appComponentClass]`AppComponent`, it can also be defined in its own file.
-The class is annotated by [hotspot=atInjectable]`@Injectable` so instances of it can be provided to
-other classes anywhere in the application.
+The [hotspot=artistsServiceClass]`ArtistsService` class is defined. While it shares the
+file of the component class [hotspot=appComponentClass]`AppComponent`, it can also be
+defined in its own file. The class is annotated by [hotspot=atInjectable]`@Injectable`
+so instances of it can be provided to other classes anywhere in the application.
 
-The class injects an instance of the [hotspot=httpClientInstance]`HttpClient` class, which it will use to
-request data from the REST API. It contains a constant [hotspot=artistsUrl]`ARTISTS_URL` which
-points to the API endpoint it will request data from. The URL does not contain a
-hostname because the artists API endpoint is accessible from the same host as the
-Angular application, but you can send requests to external APIs by specifying the full
-URL. Finally, it implements a method [hotspot=fetchArtistsMethod]`fetchArtists()` that makes the
-request and returns the result.
+The class injects an instance of the [hotspot=httpClientInstance]`HttpClient` class,
+which it uses to request data from the REST API. It contains the
+[hotspot=artistsUrl]`ARTISTS_URL` constant, which points to the API endpoint it
+requests data from. The URL does not contain a host name because the artists API
+endpoint is accessible from the same host as the Angular application. You can send
+requests to external APIs by specifying the full URL. Finally, it implements a
+[hotspot=fetchArtistsMethod]`fetchArtists()` method that makes the request and returns
+the result.
 
-To obtain the data for display on the page, [hotspot=fetchArtistsMethod]`fetchArtists()` tries to
-use the injected [hotspot=httpInstanceAndAwaitFeatureAndHttpGetAndToPromise]`http` instance to perform a `GET` HTTP request to the
-[hotspot=artistsUrl]`ARTISTS_URL` and, if successful, returns the result. If an error occurs, it
-prints the message of the error to the console.
+To obtain the data for display on the page, the
+[hotspot=fetchArtistsMethod]`fetchArtists()` method tries to use the injected
+[hotspot=httpInstanceAndAwaitFeatureAndHttpGetAndToPromise]`http` instance to perform a
+`GET` HTTP request to the [hotspot=artistsUrl]`ARTISTS_URL` constant. If successful, it
+returns the result. If an error occurs, it prints the error message to the console.
 
-[hotspot=fetchArtistsMethod]`fetchArtists()` uses a feature of JavaScript called
-[hotspot=asyncFeature]`async` and [hotspot=httpInstanceAndAwaitFeatureAndHttpGetAndToPromise]`await` to make the request and receive the
-response without preventing the application from working while it waits. In order to be
-compatible with this feature, the result of the [hotspot=httpInstanceAndAwaitFeatureAndHttpGetAndToPromise]`HttpClient.get()` method
-must be converted to a Promise using [hotspot=httpInstanceAndAwaitFeatureAndHttpGetAndToPromise]`toPromise()`. A Promise is how
-JavaScript represents the state of an asynchronous operation. If you want to learn
-more, check out https://promisejs.org[^] for an introduction.
+The [hotspot=fetchArtistsMethod]`fetchArtists()` method uses a feature of JavaScript
+called [hotspot=asyncFeature]`async`/
+[hotspot=httpInstanceAndAwaitFeatureAndHttpGetAndToPromise]`await` to make requests and
+receive responses without preventing the application from working while it waits. For
+the result of the
+[hotspot=httpInstanceAndAwaitFeatureAndHttpGetAndToPromise]`HttpClient.get()` method to
+be compatible with this feature, it must be converted to a Promise by invoking its
+[hotspot=httpInstanceAndAwaitFeatureAndHttpGetAndToPromise]`toPromise()` method. A
+Promise is how JavaScript represents the state of an asynchronous operation. If you
+want to learn more, check out https://promisejs.org[^] for an introduction.
 
 === Defining a component to consume a service
 
-Components are the basic building block of Angular application user interfaces.
+Components are the basic building blocks of Angular application user interfaces.
 Components are made up of a TypeScript class annotated with the
 [hotspot=atComponent]`@Component` annotation and the HTML template file (specified by
-[hotspot=templateUrl]`templateUrl`) and CSS style files (specified by [hotspot=styleUrls]`styleUrls`.)
+[hotspot=templateUrl]`templateUrl`) and CSS style files (specified by
+[hotspot=styleUrls]`styleUrls`.)
 
-Update the [hotspot=appComponentClass]`AppComponent` class to use the artists service to fetch the
-artists data and save it so the component can display it.
+Update the [hotspot=appComponentClass]`AppComponent` class to use the artists service
+to fetch the artists data and save it so the component can display it.
 
 [role="code_command hotspot", subs="quotes"]
 ----
@@ -226,41 +233,46 @@ artists data and save it so the component can display it.
 `src/main/frontend/src/app/app.component.ts`
 ----
 [role="edit_command_text"]
-Replace the entire [hotspot=appComponentClass]`AppComponent` class with the [hotspot=atComponent]`@Component` annotation.
-Add [hotspot=importOnInitAndAngularCorePackage]`OnInit` to the list of imported classes at the top.
+Replace the entire [hotspot=appComponentClass]`AppComponent` class with the
+[hotspot=atComponent]`@Component` annotation. Add
+[hotspot=importOnInitAndAngularCorePackage]`OnInit` to the list of imported classes at
+the top.
 
-The [hotspot=providersProperty]`providers` property on the [hotspot=atComponent]`@Component` annotation
-indicates that this component provides the [hotspot=artistsServiceClass]`ArtistsService` to other
-classes in the application.
+The [hotspot=providersProperty]`providers` property on the
+[hotspot=atComponent]`@Component` annotation indicates that this component provides the
+[hotspot=artistsServiceClass]`ArtistsService` to other classes in the application.
 
-[hotspot=appComponentClass]`AppComponent` implements [hotspot=onInitInterface]`OnInit`, which is a special
-interface called a lifecycle hook. When Angular displays, updates, or removes a
-component, it calls a specific function on the component&mdash;the lifecycle
-hook&mdash;so the component can run code in response to this event. This component
-responds to the [hotspot=onInitInterface]`OnInit` event via the [hotspot=ngOnInitMethod]`ngOnInit` method to
-fetch and populate its template with data when the component is initialized for
-display. The file imports the [hotspot=importOnInitAndAngularCorePackage]`OnInit` interface from the
+[hotspot=appComponentClass]`AppComponent` implements [hotspot=onInitInterface]`OnInit`,
+which is a special interface called a lifecycle hook. When Angular displays, updates,
+or removes a component, it calls a specific function, the lifecycle hook, on the
+component so the component can run code in response to this event. This component
+responds to the [hotspot=onInitInterface]`OnInit` event via the
+[hotspot=ngOnInitMethod]`ngOnInit` method, which fetches and populates the component's
+template with data when it is initialized for display. The file imports the
+[hotspot=importOnInitAndAngularCorePackage]`OnInit` interface from the
 [hotspot=importOnInitAndAngularCorePackage]`@angular/core` package.
 The [hotspot=appComponentClass]`AppComponent` class implements the
 [hotspot=onInitInterface]`OnInit` interface.
 
-[hotspot=artistsClassMember]`artists` is a class member of type `any[]` that starts out as an empty
-array. It holds the artists retrieved from the service so the template can
+[hotspot=artistsClassMember]`artists` is a class member of type `any[]` that starts out
+as an empty array. It holds the artists retrieved from the service so the template can
 display them.
 
-An instance of the [hotspot=artistsServiceInstanceDeclaration]`ArtistsService` class is injected into the constructor
-and is accessible by any function defined in the class. The [hotspot=ngOnInitMethod]`ngOnInit`
-function uses the [hotspot=artistsServiceInstance]`artistsService` instance to request the artists data.
-Since [hotspot=fetchArtistsMethod]`fetchArtists()` is an `async` function, it returns a Promise. To
-retrieve the data from the request, [hotspot=ngOnInitMethod]`ngOnInit` calls
-[hotspot=thenClause]`then()` on the Promise and provides a function that takes in the data
-and stores it to the [hotspot=artistsClassMember]`artists` class member.
+An instance of the [hotspot=artistsServiceInstanceDeclaration]`ArtistsService` class is
+injected into the constructor and is accessible by any function that is defined in the
+class. The [hotspot=ngOnInitMethod]`ngOnInit` function uses the
+[hotspot=artistsServiceInstance]`artistsService` instance to request the artists data.
+Since the [hotspot=fetchArtistsMethod]`fetchArtists()` method is an `async` function,
+it returns a Promise. To retrieve the data from the request,
+[hotspot=ngOnInitMethod]`ngOnInit` calls the [hotspot=thenClause]`then()` method on the
+Promise which takes in the data and stores it to the
+[hotspot=artistsClassMember]`artists` class member.
 
 == Creating the Angular component template
 
-Now that you are have a service to fetch the data and a component to store it in, you
+Now that you have a service to fetch the data and a component to store it in, you
 will create a template to specify how the data will be displayed on the page. When you
-visit the page in the browser, the component will populate the template to display
+visit the page in the browser, the component populates the template to display
 the artists data with formatting.
 
 [role="code_command hotspot", subs="quotes"]
@@ -275,13 +287,13 @@ app.component.html
 include::finish/src/main/frontend/src/app/app.component.html[]
 ----
 
-The template contains a [hotspot=artistsDiv]`div` that is enumerated using `*ngFor`. The
-`artist` variable is bound to the `artists` member of the component. The div itself
-and all elements contained within it are repeated for each artist, and the
-[hotspot=artistNameAndAlbumsLengthPlaceholders]`{{ artist.name }}` and
-[hotspot=artistNameAndAlbumsLengthPlaceholders]`{{ artist.albums.length }}` placeholders are
-populated with the information from each artist. The same strategy is used to display
-each [hotspot=albumDiv]`album` by each artist.
+The template contains a [hotspot=artistsDiv]`div` element that is enumerated using the
+`*ngFor` directive. The `artist` variable is bound to the `artists` member of the
+component. The div element itself and all elements contained within it are repeated for
+each artist, and the [hotspot=artistNameAndAlbumsLengthPlaceholders]`{{ artist.name }}`
+and [hotspot=artistNameAndAlbumsLengthPlaceholders]`{{ artist.albums.length }}`
+placeholders are populated with the information from each artist. The same strategy is
+used to display each [hotspot=albumDiv]`album` by each artist.
 
 The Open Liberty server is already started, and the REST service is running. You can
 recompile the front end by running the following command:
@@ -290,7 +302,7 @@ recompile the front end by running the following command:
 mvn generate-resources
 ```
 
-Then point your browser to the web application root
+Then, point your browser to the web application root
 http://localhost:9080/app[http://localhost:9080/app^] to see the following output:
 
 [subs="quotes", role="no_copy"]
@@ -307,13 +319,13 @@ dj wrote 0 albums:
 == Testing the Angular client
 
 No explicit code directly uses the consumed artist JSON, so you don't need to write
-any test cases for this guide.
+any test cases.
 
 Whenever you change and build your Angular implementation, the application root at
-http://localhost:9080/app[http://localhost:9080/app^] will
-reflect the changes automatically. You can visit the root to manually check whether
-the artist JSON was consumed correctly. You can rebuild only your Angular frontend by
-running the following command:
+http://localhost:9080/app[http://localhost:9080/app^] reflects the changes
+automatically. You can visit the root to manually check whether the artist JSON was
+consumed correctly. You can rebuild only your Angular front end by running the
+following command:
 [role='command']
 ```
 mvn generate-resources
@@ -326,8 +338,8 @@ running the following command:
 mvn liberty:stop-server
 ```
 
-Although the Angular application this guide showed you how to build is very simple,
-when you build more complex Angular applications, testing will become a crucial part
+Although the Angular application that this guide shows you how to build is simple,
+when you build more complex Angular applications, testing becomes a crucial part
 of your development lifecycle. If you need to write test cases, follow the official
 unit testing and end-to-end testing documentation on the
 https://angular.io/guide/testing[official Angular page^].
@@ -336,7 +348,7 @@ https://angular.io/guide/testing[official Angular page^].
 
 == Great work! You're done!
 
-You have just accessed a simple RESTful web service and consumed its resources using
+You just accessed a simple RESTful web service and consumed its resources by using
 Angular in Open Liberty.
 
 include::{common-includes}/attribution.adoc[subs="attributes"]
