@@ -1,0 +1,12 @@
+target/
+.settings/
+.project
+.classpath
+.factorypath
+MANIFEST.MF
+README.html
+.DS_Store
+ibm-web-ext.xml
+**/webapp/app/
+**/.vscode
+**/node
