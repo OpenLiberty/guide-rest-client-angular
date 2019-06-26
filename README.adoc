@@ -251,8 +251,6 @@ responds to the [hotspot=onInitInterface]`OnInit` event via the
 template with data when it is initialized for display. The file imports the
 [hotspot=importOnInitAndAngularCorePackage]`OnInit` interface from the
 [hotspot=importOnInitAndAngularCorePackage]`@angular/core` package.
-The [hotspot=appComponentClass]`AppComponent` class implements the
-[hotspot=onInitInterface]`OnInit` interface.
 
 [hotspot=artistsClassMember]`artists` is a class member of type `any[]` that starts out
 as an empty array. It holds the artists retrieved from the service so the template can
