@@ -87,13 +87,10 @@ include::{common-includes}/gitclone.adoc[]
 Before you begin the implementation, start the provided REST service so that
 the artist JSON is available to you.
 
-To start the REST service, navigate to the `start` directory and run the Maven
-`install` and `liberty:start-server` goals:
+Navigate to the `start` directory to begin.
 
 [role='command']
-----
-mvn install liberty:start-server
-----
+include::{common-includes}/devmode-start.adoc[]
 
 After you start the server, you can find your artist JSON at the
 http://localhost:9080/artists[http://localhost:9080/artists^] URL.
@@ -114,8 +111,6 @@ front end. After you start the Open Liberty server, you don't need to restart it
 // =================================================================================================
 
 == Importing the HTTP client
-
-Navigate to the `start` directory to begin.
 
 Your application needs a way to communicate with RESTful web services to retrieve their
 resources. In this case, the provided Angular application needs to communicate with the
@@ -329,12 +324,9 @@ following command:
 mvn generate-resources
 ```
 
-When you are done checking the application root, stop the Open Liberty server by
-running the following command:
-[role='command']
-```
-mvn liberty:stop-server
-```
+When you are done checking the application root, exit development mode by
+pressing CTRL+C in the shell session where you ran the server,
+or by typing q and then pressing the enter/return key.
 
 Although the Angular application that this guide shows you how to build is simple,
 when you build more complex Angular applications, testing becomes a crucial part
