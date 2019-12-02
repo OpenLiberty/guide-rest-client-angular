@@ -325,8 +325,8 @@ mvn generate-resources
 ```
 
 When you are done checking the application root, exit development mode by
-pressing CTRL+C in the shell session where you ran the server,
-or by typing q and then pressing the enter/return key.
+pressing `CTRL+C` in the shell session where you ran the server,
+or by typing `q` and then pressing the `enter/return` key.
 
 Although the Angular application that this guide shows you how to build is simple,
 when you build more complex Angular applications, testing becomes a crucial part
