@@ -153,18 +153,18 @@ data from the REST API. The component file contains two classes: the service, wh
 handles data access, and the component itself, which handles the presentation of the
 data. The provided Angular application already contains a component.
 
-app.component.ts
-[source, javascript, linenums, role="code_column"]
-----
-include::finish/src/main/frontend/src/app/app.component.ts[]
-----
-
 === Defining a service to fetch data
 
 Services are classes in Angular that are designed to share their functionality across
 entire applications. A good service performs only one function, and it performs this
 function well. In this case, the `ArtistsService` class requests artists data from the
 REST service.
+
+app.component.ts
+[source, javascript, linenums, role="code_column hide_tags=providersProperty,importOnInitAndAngularCorePackage"]
+----
+include::finish/src/main/frontend/src/app/app.component.ts[]
+----
 
 [role="code_command hotspot", subs="quotes"]
 ----
@@ -222,13 +222,19 @@ Components are made up of a TypeScript class annotated with the
 Update the [hotspot=appComponentClass]`AppComponent` class to use the artists service
 to fetch the artists data and save it so the component can display it.
 
+app.component.ts
+[source, javascript, linenums, role="code_column"]
+----
+include::finish/src/main/frontend/src/app/app.component.ts[]
+----
+
 [role="code_command hotspot", subs="quotes"]
 ----
 #Update the `app.component.ts` file.#
 `src/main/frontend/src/app/app.component.ts`
 ----
 [role="edit_command_text"]
-Replace the entire [hotspot=appComponentClass]`AppComponent` class with the
+Replace the entire [hotspot=appComponentClass]`AppComponent` class along with the
 [hotspot=atComponent]`@Component` annotation. Add
 [hotspot=importOnInitAndAngularCorePackage]`OnInit` to the list of imported classes at
 the top.
@@ -282,7 +288,7 @@ include::finish/src/main/frontend/src/app/app.component.html[]
 
 The template contains a [hotspot=artistsDiv]`div` element that is enumerated using the
 `*ngFor` directive. The `artist` variable is bound to the `artists` member of the
-component. The div element itself and all elements contained within it are repeated for
+component. The [hotspot=artistsDiv]`div` element itself and all elements contained within it are repeated for
 each artist, and the [hotspot=artistNameAndAlbumsLengthPlaceholders]`{{ artist.name }}`
 and [hotspot=artistNameAndAlbumsLengthPlaceholders]`{{ artist.albums.length }}`
 placeholders are populated with the information from each artist. The same strategy is
