@@ -315,7 +315,7 @@ dj wrote 0 albums:
 ----
 
 If you use the `curl` command to visit the web application root URL,
-you will only see the application root page in HTML. The Anuglar framework
+you will only see the application root page in HTML. The Angular framework
 uses JavaScript to render the HTML to display the application data.
 A web browser runs JavaScript, and the `curl` command doesn't.
 
