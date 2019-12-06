@@ -286,7 +286,7 @@ app.component.html
 include::finish/src/main/frontend/src/app/app.component.html[]
 ----
 
-The template contains a [hotspot=artistsDiv]`div` element that is enumerated using the
+The template contains a [hotspot=artistsDiv]`div` element that is enumerated by using the
 `*ngFor` directive. The `artist` variable is bound to the `artists` member of the
 component. The [hotspot=artistsDiv]`div` element itself and all elements contained within it are repeated for
 each artist, and the [hotspot=artistNameAndAlbumsLengthPlaceholders]`{{ artist.name }}`
@@ -314,8 +314,8 @@ bar wrote 1 albums:
 dj wrote 0 albums:
 ----
 
-If you use the `curl` command to visit the web application root URL,
-you will only see the application root page in HTML. The Angular framework
+If you use the `curl` command to access the web application root URL,
+you see only the application root page in HTML. The Angular framework
 uses JavaScript to render the HTML to display the application data.
 A web browser runs JavaScript, and the `curl` command doesn't.
 
