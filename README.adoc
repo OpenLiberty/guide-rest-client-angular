@@ -87,35 +87,29 @@ include::{common-includes}/gitclone.adoc[]
 Before you begin the implementation, start the provided REST service so that
 the artist JSON is available to you.
 
-To start the REST service, navigate to the `start` directory and run the Maven
-`install` and `liberty:start-server` goals:
+Navigate to the `start` directory to begin.
 
-[role='command']
-----
-mvn install liberty:start-server
-----
-
-After you start the server, you can find your artist JSON at the
-http://localhost:9080/artists[http://localhost:9080/artists^] URL.
-
-You can rebuild the front end at any time. To do so, run Maven with the
-`generate-resources` goal:
+First, you need to build the front end by running the Maven `generate-resources` goal:
 [role='command']
 ----
 mvn generate-resources
 ----
 
+Note that you can rebuild the front end at any time with the Maven `generate-resources` goal.
 Any local changes to your TypeScript and HTML are picked up when you build the
-front end. After you start the Open Liberty server, you don't need to restart it.
+front end.
 
+[role='command']
+include::{common-includes}/devmode-start.adoc[]
+
+You can find your artist JSON at the
+http://localhost:9080/artists[http://localhost:9080/artists^] URL.
 
 // =================================================================================================
 // Guide
 // =================================================================================================
 
 == Importing the HTTP client
-
-Navigate to the `start` directory to begin.
 
 Your application needs a way to communicate with RESTful web services to retrieve their
 resources. In this case, the provided Angular application needs to communicate with the
@@ -158,18 +152,18 @@ data from the REST API. The component file contains two classes: the service, wh
 handles data access, and the component itself, which handles the presentation of the
 data. The provided Angular application already contains a component.
 
-app.component.ts
-[source, javascript, linenums, role="code_column"]
-----
-include::finish/src/main/frontend/src/app/app.component.ts[]
-----
-
 === Defining a service to fetch data
 
 Services are classes in Angular that are designed to share their functionality across
 entire applications. A good service performs only one function, and it performs this
 function well. In this case, the `ArtistsService` class requests artists data from the
 REST service.
+
+app.component.ts
+[source, javascript, linenums, role="code_column hide_tags=providersProperty,importOnInitAndAngularCorePackage"]
+----
+include::finish/src/main/frontend/src/app/app.component.ts[]
+----
 
 [role="code_command hotspot", subs="quotes"]
 ----
@@ -227,13 +221,19 @@ Components are made up of a TypeScript class annotated with the
 Update the [hotspot=appComponentClass]`AppComponent` class to use the artists service
 to fetch the artists data and save it so the component can display it.
 
+app.component.ts
+[source, javascript, linenums, role="code_column"]
+----
+include::finish/src/main/frontend/src/app/app.component.ts[]
+----
+
 [role="code_command hotspot", subs="quotes"]
 ----
 #Update the `app.component.ts` file.#
 `src/main/frontend/src/app/app.component.ts`
 ----
 [role="edit_command_text"]
-Replace the entire [hotspot=appComponentClass]`AppComponent` class with the
+Replace the entire [hotspot=appComponentClass]`AppComponent` class along with the
 [hotspot=atComponent]`@Component` annotation. Add
 [hotspot=importOnInitAndAngularCorePackage]`OnInit` to the list of imported classes at
 the top.
@@ -285,9 +285,9 @@ app.component.html
 include::finish/src/main/frontend/src/app/app.component.html[]
 ----
 
-The template contains a [hotspot=artistsDiv]`div` element that is enumerated using the
+The template contains a [hotspot=artistsDiv]`div` element that is enumerated by using the
 `*ngFor` directive. The `artist` variable is bound to the `artists` member of the
-component. The div element itself and all elements contained within it are repeated for
+component. The [hotspot=artistsDiv]`div` element itself and all elements contained within it are repeated for
 each artist, and the [hotspot=artistNameAndAlbumsLengthPlaceholders]`{{ artist.name }}`
 and [hotspot=artistNameAndAlbumsLengthPlaceholders]`{{ artist.albums.length }}`
 placeholders are populated with the information from each artist. The same strategy is
@@ -313,6 +313,11 @@ bar wrote 1 albums:
 dj wrote 0 albums:
 ----
 
+If you use the `curl` command to access the web application root URL,
+you see only the application root page in HTML. The Angular framework
+uses JavaScript to render the HTML to display the application data.
+A web browser runs JavaScript, and the `curl` command doesn't.
+
 
 == Testing the Angular client
 
@@ -329,12 +334,9 @@ following command:
 mvn generate-resources
 ```
 
-When you are done checking the application root, stop the Open Liberty server by
-running the following command:
-[role='command']
-```
-mvn liberty:stop-server
-```
+When you are done checking the application root, exit development mode by
+pressing `CTRL+C` in the shell session where you ran the server,
+or by typing `q` and then pressing the `enter/return` key.
 
 Although the Angular application that this guide shows you how to build is simple,
 when you build more complex Angular applications, testing becomes a crucial part
