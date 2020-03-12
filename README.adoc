@@ -14,8 +14,8 @@
 :page-permalink: /guides/{projectid}
 :page-releasedate: 2019-06-21
 :page-related-guides: ['rest-intro', 'rest-client-java', 'rest-client-angularjs']
-:page-seo-title: Consuming RESTful web services with Angular
-:page-seo-description: A tutorial on how to consume microservices with the Angular framework
+:page-seo-title: Consuming a RESTful Java web service with Angular
+:page-seo-description: A getting started tutorial with examples on how to access a RESTful Java microservice and consume its resources using the Angular framework.
 :common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/master
 :source-highlighter: prettify
 :guide-author: Open Liberty
