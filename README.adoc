@@ -102,6 +102,7 @@ After you see the following message, your application server is ready.
 [role="no_copy"]
 ----
 Press the Enter key to run tests on demand.
+----
 
 Then, point your browser to the web application root http://localhost:9080[http://localhost:9080^] to see the following output:
 
@@ -114,6 +115,9 @@ bar wrote 1 albums:
     Album titled *foo walks into a bar* by *bar* contains *12* tracks
 dj wrote 0 albums:
 ----
+
+[role='command']
+include::{common-includes}/twyb-end.adoc[]
 
 // =================================================================================================
 // Starting the service
