@@ -1,4 +1,4 @@
-// Copyright (c) 2019 IBM Corporation and others.
+// Copyright (c) 2019, 2020 IBM Corporation and others.
 // Licensed under Creative Commons Attribution-NoDerivatives
 // 4.0 International (CC BY-ND 4.0)
 //   https://creativecommons.org/licenses/by-nd/4.0/
@@ -77,6 +77,46 @@ https://openliberty.io/guides/rest-intro.html[Creating a RESTful web service^].
 [role='command']
 include::{common-includes}/gitclone.adoc[]
 
+
+=== Try what you'll build
+
+The `finish` directory in the root of this guide contains the finished application. Give it a try before you proceed.
+
+To try out the application, first go to the `finish` directory and build your Angular frontend:
+
+[role='command']
+```
+mvn generate-resources
+```
+
+Run the following Maven goal to build the application and deploy it to Open Liberty:
+
+[role='command']
+```
+mvn liberty:run
+```
+
+After you see the following message, your application server is ready.
+
+[role="no_copy"]
+----
+The defaultServer server is ready to run a smarter planet.
+----
+
+Then, point your browser to the web application root http://localhost:9080/app[http://localhost:9080/app^] to see the following output:
+
+[subs="quotes", role="no_copy"]
+----
+foo wrote 2 albums:
+    Album titled *album_one* by *foo* contains *12* tracks
+    Album tilted *album_two* by *foo* contains *15* tracks
+bar wrote 1 albums:
+    Album titled *foo walks into a bar* by *bar* contains *12* tracks
+dj wrote 0 albums:
+----
+
+[role='command']
+include::{common-includes}/twyb-end.adoc[]
 
 // =================================================================================================
 // Starting the service
