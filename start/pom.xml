@@ -16,7 +16,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <!-- Plugin versions -->
-        <version.liberty-maven-plugin>3.1</version.liberty-maven-plugin>
+        <version.liberty-maven-plugin>3.2</version.liberty-maven-plugin>
         <version.maven-war-plugin>3.2.2</version.maven-war-plugin>
     </properties>
 
@@ -27,7 +27,7 @@
             <!-- tag::microprofile[] -->
             <artifactId>microprofile</artifactId>
             <!-- end::microprofile[] -->
-            <version>3.2</version>
+            <version>3.3</version>
             <type>pom</type>
             <scope>provided</scope>
         </dependency>
