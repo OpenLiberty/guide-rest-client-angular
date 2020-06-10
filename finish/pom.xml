@@ -31,7 +31,6 @@
             <type>pom</type>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -53,11 +52,11 @@
                 <artifactId>frontend-maven-plugin</artifactId>
                 <version>1.9.1</version>
                 <configuration>
+                    <!-- tag::working-dir[] -->
                     <workingDirectory>src/main/frontend</workingDirectory>
+                    <!-- end::working-dir[] -->
                 </configuration>
-
                 <executions>
-
                     <execution>
                         <id>install node and npm</id>
                         <goals>
@@ -68,7 +67,7 @@
                             <npmVersion>6.14.4</npmVersion>
                         </configuration>
                     </execution>
-
+                    <!-- tag::node-resource-install[] -->
                     <execution>
                         <id>npm install</id>
                         <goals>
@@ -79,7 +78,8 @@
                             <arguments>install</arguments>
                         </configuration>
                     </execution>
-
+                    <!-- end::node-resource-install[] -->
+                    <!-- tag::node-resource-build[] -->
                     <execution>
                         <id>npm run build</id>
                         <goals>
@@ -89,7 +89,7 @@
                             <arguments>run build</arguments>
                         </configuration>
                     </execution>
-
+                    <!-- end::node-resource-build[] -->
                 </executions>
             </plugin>
         </plugins>
