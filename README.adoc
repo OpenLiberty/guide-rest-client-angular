@@ -139,7 +139,8 @@ Node.js is a JavaScript runtime that is used for developing networking applicati
 
 The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` the dependencies listed in your `package.json` from the npm registry into a folder called `node_modules`, which can be found in your [hotspot=working-dir]`working` directory. Then, the configuration [hotspot=node-resource-build]`produces` the production files to the `src/main/frontend/src/app` directory. 
 
-The `src/main/frontend/src/angular.json` is defined so that the `src/main/frontend/src/app` directory is copied into the web content of your application.
+The `src/main/frontend/src/angular.json` is defined so that the 
+`src/main/frontend/src/app` directory is copied into the web content of your application.
 
 pom.xml
 [source, xml, linenums, role='code_column']
@@ -329,7 +330,7 @@ the artists data with formatting.
 
 [role="code_command hotspot", subs="quotes"]
 ----
-#Create the `app.component.html`file.#
+#Create the `app.component.html` file.#
 `src/main/frontend/src/app/app.component.html`
 ----
 

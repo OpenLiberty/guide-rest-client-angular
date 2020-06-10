@@ -57,8 +57,8 @@
                     <workingDirectory>src/main/frontend</workingDirectory>
                     <!-- end::working-dir[] -->
                 </configuration>
-                <!-- tag::node-resource-install[] -->
                 <executions>
+                    <!-- tag::node-resource-install[] -->
                     <execution>
                         <id>install node and npm</id>
                         <goals>
