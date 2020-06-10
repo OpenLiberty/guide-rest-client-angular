@@ -47,6 +47,7 @@
                 <artifactId>liberty-maven-plugin</artifactId>
                 <version>${version.liberty-maven-plugin}</version>
             </plugin>
+            <!-- tag::frontend-plugin[] -->
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
@@ -56,6 +57,7 @@
                     <workingDirectory>src/main/frontend</workingDirectory>
                     <!-- end::working-dir[] -->
                 </configuration>
+                <!-- tag::node-resource-install[] -->
                 <executions>
                     <execution>
                         <id>install node and npm</id>
@@ -65,17 +67,6 @@
                         <configuration>
                             <nodeVersion>v12.16.2</nodeVersion>
                             <npmVersion>6.14.4</npmVersion>
-                        </configuration>
-                    </execution>
-                    <!-- tag::node-resource-install[] -->
-                    <execution>
-                        <id>npm install</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <!-- Optional configuration which provides for running any npm command -->
-                        <configuration>
-                            <arguments>install</arguments>
                         </configuration>
                     </execution>
                     <!-- end::node-resource-install[] -->
@@ -92,6 +83,7 @@
                     <!-- end::node-resource-build[] -->
                 </executions>
             </plugin>
+            <!-- end::frontend-plugin[] -->
         </plugins>
     </build>
 </project>

@@ -137,9 +137,9 @@ The front end of your application uses Node.js to execute your Angular code. The
 
 Node.js is a JavaScript runtime that is used for developing networking applications. Its convenient package manager, https://www.npmjs.com/[npm^], is used to execute the Angular scripts found in the `package.json` file. To learn more about Node.js, see the official https://nodejs.org/en/docs/[Node.js documentation^].
 
-The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` the dependencies listed in your `package.json` from the npm registry into a folder called `node_modules`, which can be found in your [hotspot=working-dir]`working` directory. Then, [hotspot=node-resource-build]`produces` the production files to the `src/main/frontend/src/app` directory. 
+The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` the dependencies listed in your `package.json` from the npm registry into a folder called `node_modules`, which can be found in your [hotspot=working-dir]`working` directory. Then, the configuration [hotspot=node-resource-build]`produces` the production files to the `src/main/frontend/src/app` directory. 
 
-Then, the `src/main/frontend/src/angular.json` is defined so that the `src/main/frontend/src/app` directory is copied into the web content of your application.
+The `src/main/frontend/src/angular.json` is defined so that the `src/main/frontend/src/app` directory is copied into the web content of your application.
 
 pom.xml
 [source, xml, linenums, role='code_column']
@@ -156,7 +156,7 @@ include::finish/pom.xml[]
 Your application needs a way to communicate with RESTful web services to retrieve their
 resources. In this case, the provided Angular application needs to communicate with the
 artists service to retrieve the artists JSON. While there are various ways to perform
-this task, Angular contains a built-in HTTP Client module that you can use.
+this task, Angular contains a built-in `HttpClientModule` that you can use.
 
 Angular applications consist of modules, which are groups of classes that
 perform specific functions. The Angular framework provides its own modules
@@ -164,12 +164,8 @@ for applications to use. One of these modules, the HTTP Client module, includes
 convenience classes that make it easier and quicker for you to consume a RESTful API
 from your application.
 
-The provided application is organized into a module, called the root module, and
-defined in the [hotspot]`app.module.ts` file. 
-
-=== Importing the Angular HTTP client module
-
-Begin by creating the root module which includes the Angular HTTP Client module.
+You will create the module that organizes your application, called the root module,
+which includes the Angular HTTP Client module.
 
 app.module.ts
 [source, javascript, linenums, role="code_column"]
@@ -182,29 +178,37 @@ include::finish/src/main/frontend/src/app/app.module.ts[]
 #Create the `app.module.ts` file.#
 `src/main/frontend/src/app/app.module.ts`
 ----
-[role="edit_command_text"]
-The [hotspot=importHttpClientModule]`HttpClientModule` class into the file, then
-update the [hotspot=importsArray]`imports` array within the
-[hotspot=atNgModule]`@NgModule` declaration to include
-[hotspot=httpClientModule]`HttpClientModule`.
+
+The [hotspot=importHttpClientModule]`HttpClientModule` imports the class into the file.
+The [hotspot=atNgModule]`@NgModule` tag allows you to declare a module and organize 
+your dependencies within the Angular framework. To use the HTTP Client module in your application, 
+the `imports` array is a declaration array that imports the [hotspot=httpClientModule]`HttpClientModule`.
 
 // =================================================================================================
-// Creating the Angular component
+// Creating the Angular component to fetch data
 // =================================================================================================
 
-== Creating the Angular component
+== Creating the Angular service to fetch data
 
 You need to create the component that is used in the application to acquire and display
 data from the REST API. The component file contains two classes: the service, which
 handles data access, and the component itself, which handles the presentation of the
-data. The provided Angular application already contains a component.
+data.
 
 Services are classes in Angular that are designed to share their functionality across
 entire applications. A good service performs only one function, and it performs this
 function well. In this case, the `ArtistsService` class requests artists data from the
 REST service.
 
-=== Defining a service to fetch data
+You need to create the component that is used in the application to acquire and display
+data from the REST API. The component file contains two classes: the service, which
+handles data access, and the component itself, which handles the presentation of the
+data.
+
+Services are classes in Angular that are designed to share their functionality across
+entire applications. A good service performs only one function, and it performs this
+function well. In this case, the `ArtistsService` class requests artists data from the
+REST service.
 
 app.component.ts
 [source, javascript, linenums, role="code_column hide_tags=providersProperty,importOnInitAndAngularCorePackage"]
@@ -217,11 +221,6 @@ include::finish/src/main/frontend/src/app/app.component.ts[]
 #Create the `app.component.ts` file.#
 `src/main/frontend/src/app/app.component.ts`
 ----
-[role="edit_command_text"]
-Create the entire [hotspot=artistsServiceClass]`ArtistsService` class with the
-[hotspot=atInjectable]`@Injectable` annotation. Add the
-[hotspot=importHttpClient]`HttpClient` and [hotspot=importInjectable]`Injectable`
-import statements at the top.
 
 The file imports the [hotspot=importHttpClient]`HttpClient` class and the
 [hotspot=importInjectable]`Injectable` decorator.
@@ -257,7 +256,11 @@ be compatible with this feature, it must be converted to a Promise by invoking i
 Promise is how JavaScript represents the state of an asynchronous operation. If you
 want to learn more, check out https://promisejs.org[^] for an introduction.
 
-== Creating a component to comsume the service
+// =================================================================================================
+// Defining the component to consume the service
+// =================================================================================================
+
+== Defining the component to consume the service
 
 Components are the basic building blocks of Angular application user interfaces.
 Components are made up of a TypeScript class annotated with the
@@ -265,7 +268,7 @@ Components are made up of a TypeScript class annotated with the
 [hotspot=templateUrl]`templateUrl`) and CSS style files (specified by
 [hotspot=styleUrls]`styleUrls`.)
 
-Create the [hotspot=appComponentClass]`AppComponent` class to use the artists service
+Update the [hotspot=appComponentClass]`AppComponent` class to use the artists service
 to fetch the artists data and save it so the component can display it.
 
 app.component.ts
@@ -276,7 +279,7 @@ include::finish/src/main/frontend/src/app/app.component.ts[]
 
 [role="code_command hotspot", subs="quotes"]
 ----
-#Create the `app.component.ts` file.#
+#Update the `app.component.ts` file.#
 `src/main/frontend/src/app/app.component.ts`
 ----
 [role="edit_command_text"]
@@ -326,7 +329,7 @@ the artists data with formatting.
 
 [role="code_command hotspot", subs="quotes"]
 ----
-#Replace the component's template file `app.component.html`.#
+#Create the `app.component.html`file.#
 `src/main/frontend/src/app/app.component.html`
 ----
 
