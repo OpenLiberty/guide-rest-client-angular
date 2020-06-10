@@ -201,16 +201,6 @@ entire applications. A good service performs only one function, and it performs 
 function well. In this case, the `ArtistsService` class requests artists data from the
 REST service.
 
-You need to create the component that is used in the application to acquire and display
-data from the REST API. The component file contains two classes: the service, which
-handles data access, and the component itself, which handles the presentation of the
-data.
-
-Services are classes in Angular that are designed to share their functionality across
-entire applications. A good service performs only one function, and it performs this
-function well. In this case, the `ArtistsService` class requests artists data from the
-REST service.
-
 app.component.ts
 [source, javascript, linenums, role="code_column hide_tags=providersProperty,importOnInitAndAngularCorePackage"]
 ----
