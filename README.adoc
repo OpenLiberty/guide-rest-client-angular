@@ -344,8 +344,8 @@ used to display each [hotspot=albumDiv]`album` by each artist.
 
 == Building the front end
 
-The Open Liberty server is already started, and the REST service is running. You can
-recompile the front end by running the following command:
+The Open Liberty server is already started, and the REST service is running. In a new 
+shell session, you can build the front end by running the following command:
 
 [role='command']
 ```
