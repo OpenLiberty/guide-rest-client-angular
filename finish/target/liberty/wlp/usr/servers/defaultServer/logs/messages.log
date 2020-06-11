@@ -1,0 +1,50 @@
+********************************************************************************
+product = Open Liberty 20.0.0.6 (wlp-1.0.41.cl200620200528-0414)
+wlp.install.dir = /Users/danny.salman@ibm.com/Desktop/was-dev-content-toronto/open-liberty-guides/open-liberty-guides-static/guide-rest-client-angular/finish/target/liberty/wlp/
+java.home = /Library/Java/JavaVirtualMachines/adoptopenjdk-11-openj9.jdk/Contents/Home
+java.version = 11.0.4
+java.runtime = OpenJDK Runtime Environment (11.0.4+11)
+os = Mac OS X (10.15.4; x86_64) (en_US)
+process = 40104@Dannys-MacBook-Pro.local
+********************************************************************************
+[6/10/20, 18:13:25:128 EDT] 00000001 com.ibm.ws.kernel.launch.internal.FrameworkManager           A CWWKE0001I: The server defaultServer has been launched.
+[6/10/20, 18:13:26:419 EDT] 00000001 com.ibm.ws.kernel.launch.internal.FrameworkManager           I CWWKE0002I: The kernel started after 1.916 seconds
+[6/10/20, 18:13:26:476 EDT] 0000003a com.ibm.ws.kernel.feature.internal.FeatureManager            I CWWKF0007I: Feature update started.
+[6/10/20, 18:13:28:327 EDT] 0000002f com.ibm.ws.app.manager.internal.monitor.DropinMonitor        A CWWKZ0058I: Monitoring dropins for applications.
+[6/10/20, 18:13:28:672 EDT] 00000030 g.apache.cxf.cxf.core.3.2:1.0.41.cl200620200528-0414(id=90)] I Aries Blueprint packages not available. So namespaces will not be registered
+[6/10/20, 18:13:28:775 EDT] 00000045 com.ibm.ws.app.manager.AppMessageHelper                      I CWWKZ0018I: Starting application guide-rest-client-angular.
+[6/10/20, 18:13:28:776 EDT] 00000045 bm.ws.app.manager.war.internal.WARDeployedAppInfoFactoryImpl I CWWKZ0134I: The guide-rest-client-angular application is using the loose application definition at the /Users/danny.salman@ibm.com/Desktop/was-dev-content-toronto/open-liberty-guides/open-liberty-guides-static/guide-rest-client-angular/finish/target/liberty/wlp/usr/servers/defaultServer/apps/guide-rest-client-angular.war.xml location.
+[6/10/20, 18:13:29:196 EDT] 00000045 com.ibm.ws.session.WASSessionCore                            I SESN8501I: The session manager did not find a persistent storage location; HttpSession objects will be stored in the local application server's memory.
+[6/10/20, 18:13:29:203 EDT] 00000045 com.ibm.ws.webcontainer.osgi.webapp.WebGroup                 I SRVE0169I: Loading Web Module: Liberty Project.
+[6/10/20, 18:13:29:206 EDT] 00000045 com.ibm.ws.webcontainer                                      I SRVE0250I: Web Module Liberty Project has been bound to default_host.
+[6/10/20, 18:13:29:207 EDT] 00000045 com.ibm.ws.http.internal.VirtualHostImpl                     A CWWKT0016I: Web application available (default_host): http://192.168.0.14:9080/
+[6/10/20, 18:13:29:275 EDT] 00000049 com.ibm.ws.session.WASSessionCore                            I SESN0176I: A new session context will be created for application key default_host/
+[6/10/20, 18:13:29:300 EDT] 00000049 com.ibm.ws.util                                              I SESN0172I: The session manager is using the Java default SecureRandom implementation for session ID generation.
+[6/10/20, 18:13:29:377 EDT] 00000049 com.ibm.ws.app.manager.AppMessageHelper                      A CWWKZ0001I: Application guide-rest-client-angular started in 0.603 seconds.
+[6/10/20, 18:13:29:400 EDT] 0000003a com.ibm.ws.tcpchannel.internal.TCPPort                       I CWWKO0219I: TCP Channel defaultHttpEndpoint has been started and is now listening for requests on host *  (IPv6) port 9080.
+[6/10/20, 18:13:29:434 EDT] 0000003a com.ibm.ws.kernel.feature.internal.FeatureManager            A CWWKF0012I: The server installed the following features: [jaxrs-2.1, jaxrsClient-2.1, jsonp-1.1, servlet-4.0].
+[6/10/20, 18:13:29:434 EDT] 0000003a com.ibm.ws.kernel.feature.internal.FeatureManager            I CWWKF0008I: Feature update completed in 3.018 seconds.
+[6/10/20, 18:13:29:435 EDT] 0000003a com.ibm.ws.kernel.feature.internal.FeatureManager            A CWWKF0011I: The defaultServer server is ready to run a smarter planet. The defaultServer server started in 4.934 seconds.
+[6/10/20, 18:13:29:557 EDT] 0000004a com.ibm.ws.webcontainer.osgi.mbeans.PluginGenerator          I SRVE9103I: A configuration file for a web server plugin was automatically generated for this server at /Users/danny.salman@ibm.com/Desktop/was-dev-content-toronto/open-liberty-guides/open-liberty-guides-static/guide-rest-client-angular/finish/target/liberty/wlp/usr/servers/defaultServer/logs/state/plugin-cfg.xml.
+[6/10/20, 18:13:32:301 EDT] 0000003a com.ibm.ws.http.internal.VirtualHostImpl                     A CWWKT0017I: Web application removed (default_host): http://192.168.0.14:9080/
+[6/10/20, 18:13:32:312 EDT] 0000003a com.ibm.ws.app.manager.AppMessageHelper                      A CWWKZ0009I: The application guide-rest-client-angular has stopped successfully.
+[6/10/20, 18:13:32:317 EDT] 0000003a com.ibm.ws.app.manager.AppMessageHelper                      I CWWKZ0018I: Starting application guide-rest-client-angular.
+[6/10/20, 18:13:32:318 EDT] 0000003a bm.ws.app.manager.war.internal.WARDeployedAppInfoFactoryImpl I CWWKZ0134I: The guide-rest-client-angular application is using the loose application definition at the /Users/danny.salman@ibm.com/Desktop/was-dev-content-toronto/open-liberty-guides/open-liberty-guides-static/guide-rest-client-angular/finish/target/liberty/wlp/usr/servers/defaultServer/apps/guide-rest-client-angular.war.xml location.
+[6/10/20, 18:13:32:350 EDT] 00000052 com.ibm.ws.webcontainer.osgi.mbeans.PluginGenerator          I SRVE9103I: A configuration file for a web server plugin was automatically generated for this server at /Users/danny.salman@ibm.com/Desktop/was-dev-content-toronto/open-liberty-guides/open-liberty-guides-static/guide-rest-client-angular/finish/target/liberty/wlp/usr/servers/defaultServer/logs/state/plugin-cfg.xml.
+[6/10/20, 18:13:32:364 EDT] 0000003a com.ibm.ws.webcontainer.osgi.webapp.WebGroup                 I SRVE0169I: Loading Web Module: Liberty Project.
+[6/10/20, 18:13:32:365 EDT] 0000003a com.ibm.ws.webcontainer                                      I SRVE0250I: Web Module Liberty Project has been bound to default_host.
+[6/10/20, 18:13:32:365 EDT] 0000003a com.ibm.ws.http.internal.VirtualHostImpl                     A CWWKT0016I: Web application available (default_host): http://192.168.0.14:9080/
+[6/10/20, 18:13:32:369 EDT] 00000054 com.ibm.ws.session.WASSessionCore                            I SESN0176I: A new session context will be created for application key default_host/
+[6/10/20, 18:13:32:369 EDT] 00000054 com.ibm.ws.util                                              I SESN0172I: The session manager is using the Java default SecureRandom implementation for session ID generation.
+[6/10/20, 18:13:32:371 EDT] 00000054 com.ibm.ws.app.manager.AppMessageHelper                      A CWWKZ0003I: The application guide-rest-client-angular updated in 0.054 seconds.
+[6/10/20, 18:13:32:394 EDT] 00000056 com.ibm.ws.webcontainer.osgi.mbeans.PluginGenerator          I SRVE9103I: A configuration file for a web server plugin was automatically generated for this server at /Users/danny.salman@ibm.com/Desktop/was-dev-content-toronto/open-liberty-guides/open-liberty-guides-static/guide-rest-client-angular/finish/target/liberty/wlp/usr/servers/defaultServer/logs/state/plugin-cfg.xml.
+[6/10/20, 18:13:33:654 EDT] 0000004d g.apache.cxf.cxf.core.3.2:1.0.41.cl200620200528-0414(id=90)] I Setting the server's publish address to be /artists/
+[6/10/20, 18:13:33:734 EDT] 0000004d com.ibm.ws.webcontainer.servlet                              I SRVE0242I: [guide-rest-client-angular] [/] [io.openliberty.guides.consumingrest.service.ArtistApplication]: Initialization successful.
+[6/10/20, 18:13:37:176 EDT] 0000002b com.ibm.ws.kernel.launch.internal.FrameworkManager           A CWWKE0085I: The server defaultServer is stopping because the JVM is exiting.
+[6/10/20, 18:13:37:181 EDT] 00000062 com.ibm.ws.runtime.update.internal.RuntimeUpdateManagerImpl  A CWWKE1100I: Waiting for up to 30 seconds for the server to quiesce.
+[6/10/20, 18:13:37:190 EDT] 00000059 com.ibm.ws.tcpchannel.internal.TCPChannel                    I CWWKO0220I: TCP Channel defaultHttpEndpoint has stopped listening for requests on host *  (IPv6) port 9080.
+[6/10/20, 18:13:37:192 EDT] 00000059 com.ibm.ws.http.internal.VirtualHostImpl                     A CWWKT0017I: Web application removed (default_host): http://192.168.0.14:9080/
+[6/10/20, 18:13:37:476 EDT] 0000002c com.ibm.ws.kernel.launch.internal.ServerCommandListener      A CWWKE0055I: Server shutdown requested on Wednesday, June 10, 2020 at 6:13 PM. The server defaultServer is shutting down.
+[6/10/20, 18:13:38:201 EDT] 00000062 com.ibm.ws.runtime.update.internal.RuntimeUpdateManagerImpl  I CWWKE1101I: Server quiesce complete.
+[6/10/20, 18:13:38:230 EDT] 00000043 com.ibm.ws.app.manager.AppMessageHelper                      A CWWKZ0009I: The application guide-rest-client-angular has stopped successfully.
+[6/10/20, 18:13:38:577 EDT] 00000001 com.ibm.ws.kernel.launch.internal.FrameworkManager           A CWWKE0036I: The server defaultServer stopped after 14.076 seconds.

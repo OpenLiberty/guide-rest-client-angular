@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archive>
+    <dir sourceOnDisk="/Users/danny.salman@ibm.com/Desktop/was-dev-content-toronto/open-liberty-guides/open-liberty-guides-static/guide-rest-client-angular/finish/src/main/webapp" targetInArchive="/"/>
+    <dir sourceOnDisk="/Users/danny.salman@ibm.com/Desktop/was-dev-content-toronto/open-liberty-guides/open-liberty-guides-static/guide-rest-client-angular/finish/target/classes" targetInArchive="/WEB-INF/classes"/>
+    <file sourceOnDisk="/Users/danny.salman@ibm.com/Desktop/was-dev-content-toronto/open-liberty-guides/open-liberty-guides-static/guide-rest-client-angular/finish/target/tmp/META-INF/MANIFEST.MF" targetInArchive="/META-INF/MANIFEST.MF"/>
+</archive>
