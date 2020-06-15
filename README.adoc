@@ -50,7 +50,7 @@ advance and responds with the [hotspot]`artists.json`.
 
 The Angular application was created and configured for you in the `frontend`
 directory. It contains the default starter application. There are many files that make
-up an Angular application, but you only need to edit only a few to consume the REST
+up an Angular application, but you only need to edit a few to consume the REST
 service and display its data.
 
 Angular applications must be compiled before they can be used. The Angular compilation
