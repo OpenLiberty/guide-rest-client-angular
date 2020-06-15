@@ -382,14 +382,7 @@ any test cases.
 
 Whenever you change and build your Angular implementation, the application root at
 http://localhost:9080/app[http://localhost:9080/app^] reflects the changes
-automatically. You can visit the root to manually check whether the artist JSON was
-consumed correctly. You can rebuild only your Angular front end by running the
-following command:
-
-[role='command']
-```
-mvn generate-resources
-```
+automatically. 
 
 When you are done checking the application root, exit development mode by
 pressing `CTRL+C` in the shell session where you ran the server,
