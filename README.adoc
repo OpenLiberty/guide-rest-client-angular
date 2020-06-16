@@ -128,19 +128,18 @@ You can find your artist JSON at the
 http://localhost:9080/artists[http://localhost:9080/artists^] URL.
 
 // =================================================================================================
-// Project Configuration 
+// Project configuration 
 // =================================================================================================
 
-== Project Configuration
+== Project configuration
 
-The front end of your application uses Node.js to execute your Angular code. The Maven project is configured for you to install Node.js, and produce the production files which will be copied to the web content of your application.
+The front end of your application uses Node.js to execute your Angular code. The Maven project is configured for you to install Node.js and produce the production files, which are copied to the web content of your application.
 
 Node.js is server-side JavaScript runtime that is used for developing networking applications. Its convenient package manager, https://www.npmjs.com/[npm^], is used to execute the Angular scripts found in the `package.json` file. To learn more about Node.js, see the official https://nodejs.org/en/docs/[Node.js documentation^].
 
-The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` the dependencies listed in your `package.json` from the npm registry into a folder called `node_modules`, which can be found in your [hotspot=working-dir]`working` directory. Then, the configuration [hotspot=node-resource-build]`produces` the production files to the `src/main/frontend/src/app` directory. 
+The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` the dependencies listed in your `package.json` file from the npm registry into a folder called `node_modules`. The `node_modules` folder is found in your [hotspot=working-dir]`working` directory. Then, the configuration [hotspot=node-resource-build]`produces` the production files to the `src/main/frontend/src/app` directory. 
 
-The `src/main/frontend/src/angular.json` is defined so that the 
-production build is copied into the web content of your application.
+The `src/main/frontend/src/angular.json` file is defined so that the production build is copied into the web content of your application.
 
 pom.xml
 [source, xml, linenums, role='code_column']
@@ -154,8 +153,8 @@ include::finish/pom.xml[]
 
 == Creating the root Angular module
 
-Your application needs a way to communicate with RESTful web services to retrieve their
-resources. In this case, the provided Angular application needs to communicate with the
+Your application needs a way to communicate with and retrieve resources from RESTful web services. 
+In this case, the provided Angular application needs to communicate with the
 artists service to retrieve the artists JSON. While there are various ways to perform
 this task, Angular contains a built-in `HttpClientModule` that you can use.
 
@@ -165,8 +164,8 @@ for applications to use. One of these modules, the HTTP Client module, includes
 convenience classes that make it easier and quicker for you to consume a RESTful API
 from your application.
 
-You will create the module that organizes your application, called the root module,
-which includes the Angular HTTP Client module.
+You will create the module that organizes your application, which is called the root module. 
+The root module includes the Angular HTTP Client module.
 
 app.module.ts
 [source, javascript, linenums, role="code_column"]
@@ -181,9 +180,8 @@ include::finish/src/main/frontend/src/app/app.module.ts[]
 ----
 
 The [hotspot=importHttpClientModule]`HttpClientModule` imports the class into the file.
-The [hotspot=atNgModule]`@NgModule` tag allows you to declare a module and organize 
-your dependencies within the Angular framework. To use the HTTP Client module in your application, 
-the `imports` array is a declaration array that imports the [hotspot=httpClientModule]`HttpClientModule`.
+By using the [hotspot=atNgModule]`@NgModule` tag, you can declare a module and organize 
+your dependencies within the Angular framework. The `imports` array is a declaration array that imports the [hotspot=httpClientModule]`HttpClientModule` so that you can use the HTTP Client module in your application.
 
 // =================================================================================================
 // Creating the Angular component to fetch data
@@ -345,19 +343,18 @@ used to display each [hotspot=albumDiv]`album` by each artist.
 == Building the front end
 
 The Open Liberty server is already started, and the REST service is running. In a new 
-shell session, you can build the front end by running the following command:
+command-line session, build the front end by running the following command:
 
 [role='command']
 ```
 mvn generate-resources
 ```
 
-Note that you can rebuild the front end at any time with the Maven `generate-resources` goal.
-Any local changes to your TypeScript and HTML are picked up when you build the
-front end.
+You can rebuild the front end at any time with the `generate-resources` Maven goal. 
+Any local changes to your TypeScript or HTML are picked up when you build the front end.
 
-Point your browser to the web application root
-http://localhost:9080/app[http://localhost:9080/app^] to see the following output:
+Point your browser to the http://localhost:9080/app[http://localhost:9080/app^] 
+web application root to see the following output:
 
 [subs="quotes", role="no_copy"]
 ----
