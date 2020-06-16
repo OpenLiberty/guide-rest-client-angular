@@ -135,7 +135,7 @@ http://localhost:9080/artists[http://localhost:9080/artists^] URL.
 
 The front end of your application uses Node.js to execute your Angular code. The Maven project is configured for you to install Node.js, and produce the production files which will be copied to the web content of your application.
 
-Node.js is a JavaScript runtime that is used for developing networking applications. Its convenient package manager, https://www.npmjs.com/[npm^], is used to execute the Angular scripts found in the `package.json` file. To learn more about Node.js, see the official https://nodejs.org/en/docs/[Node.js documentation^].
+Node.js is server-side JavaScript runtime that is used for developing networking applications. Its convenient package manager, https://www.npmjs.com/[npm^], is used to execute the Angular scripts found in the `package.json` file. To learn more about Node.js, see the official https://nodejs.org/en/docs/[Node.js documentation^].
 
 The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` the dependencies listed in your `package.json` from the npm registry into a folder called `node_modules`, which can be found in your [hotspot=working-dir]`working` directory. Then, the configuration [hotspot=node-resource-build]`produces` the production files to the `src/main/frontend/src/app` directory. 
 
