@@ -70,6 +70,16 @@
                         </configuration>
                     </execution>
                     <!-- end::node-resource-install[] -->
+                    <execution>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <!-- Optional configuration which provides for running any npm command -->
+                        <configuration>
+                            <arguments>install</arguments>
+                        </configuration>
+                    </execution>
                     <!-- tag::node-resource-build[] -->
                     <execution>
                         <id>npm run build</id>
