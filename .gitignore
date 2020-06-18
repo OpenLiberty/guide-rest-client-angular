@@ -1,4 +1,4 @@
-target/
+start/src/target
 .settings/
 .project
 .classpath
@@ -7,6 +7,6 @@ MANIFEST.MF
 README.html
 .DS_Store
 ibm-web-ext.xml
-**/webapp/app/
+start/src/main/webapp/app/
 **/.vscode
 **/node

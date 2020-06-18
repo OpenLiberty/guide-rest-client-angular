@@ -50,7 +50,7 @@ advance and responds with the [hotspot]`artists.json`.
 
 The Angular application was created and configured for you in the `frontend`
 directory. It contains the default starter application. There are many files that make
-up an Angular application, but you only need to edit only a few to consume the REST
+up an Angular application, but you only need to edit a few to consume the REST
 service and display its data.
 
 Angular applications must be compiled before they can be used. The Angular compilation
@@ -77,19 +77,11 @@ https://openliberty.io/guides/rest-intro.html[Creating a RESTful web service^].
 [role='command']
 include::{common-includes}/gitclone.adoc[]
 
-
 === Try what you'll build
 
 The `finish` directory in the root of this guide contains the finished application. Give it a try before you proceed.
 
-To try out the application, first go to the `finish` directory and build your Angular frontend:
-
-[role='command']
-```
-mvn generate-resources
-```
-
-Run the following Maven goal to build the application and deploy it to Open Liberty:
+Navigate to the `finish` directory and run the following Maven goal to build the application and deploy it to Open Liberty:
 
 [role='command']
 ```
@@ -129,16 +121,6 @@ the artist JSON is available to you.
 
 Navigate to the `start` directory to begin.
 
-First, you need to build the front end by running the Maven `generate-resources` goal:
-[role='command']
-----
-mvn generate-resources
-----
-
-Note that you can rebuild the front end at any time with the Maven `generate-resources` goal.
-Any local changes to your TypeScript and HTML are picked up when you build the
-front end.
-
 [role='command']
 include::{common-includes}/devmode-start.adoc[]
 
@@ -146,23 +128,35 @@ You can find your artist JSON at the
 http://localhost:9080/artists[http://localhost:9080/artists^] URL.
 
 // =================================================================================================
-// Guide
+// Project configuration 
 // =================================================================================================
 
-== Importing the HTTP client
+== Project configuration
 
-Your application needs a way to communicate with RESTful web services to retrieve their
-resources. In this case, the provided Angular application needs to communicate with the
+The front end of your application uses Node.js to execute your Angular code. The Maven project is configured for you to install Node.js and produce the production files, which are copied to the web content of your application.
+
+Node.js is server-side JavaScript runtime that is used for developing networking applications. Its convenient package manager, https://www.npmjs.com/[npm^], is used to execute the Angular scripts found in the `package.json` file. To learn more about Node.js, see the official https://nodejs.org/en/docs/[Node.js documentation^].
+
+The [hotspot=frontend-plugin]`frontend-maven-plugin` is used to [hotspot=node-resource-install]`install` the dependencies listed in your `package.json` file from the npm registry into a folder called `node_modules`. The `node_modules` folder is found in your [hotspot=working-dir]`working` directory. Then, the configuration [hotspot=node-resource-build]`produces` the production files to the `src/main/frontend/src/app` directory. 
+
+The `src/main/frontend/src/angular.json` file is defined so that the production build is copied into the web content of your application.
+
+pom.xml
+[source, xml, linenums, role='code_column']
+----
+include::finish/pom.xml[]
+----
+
+// =================================================================================================
+// Creating the root Angular module
+// =================================================================================================
+
+== Creating the root Angular module
+
+Your application needs a way to communicate with and retrieve resources from RESTful web services. 
+In this case, the provided Angular application needs to communicate with the
 artists service to retrieve the artists JSON. While there are various ways to perform
-this task, Angular contains a built-in HTTP Client module that you can use.
-
-Begin by importing the Angular HTTP Client module into the root module.
-
-app.module.ts
-[source, javascript, linenums, role="code_column"]
-----
-include::finish/src/main/frontend/src/app/app.module.ts[]
-----
+this task, Angular contains a built-in `HttpClientModule` that you can use.
 
 Angular applications consist of modules, which are groups of classes that
 perform specific functions. The Angular framework provides its own modules
@@ -170,29 +164,35 @@ for applications to use. One of these modules, the HTTP Client module, includes
 convenience classes that make it easier and quicker for you to consume a RESTful API
 from your application.
 
-The provided application is organized into a module, called the root module, and
-defined in the [hotspot]`app.module.ts` file. You must import the HTTP Client module
-into the root module for its classes to be accessible from the application's code.
+You will create the module that organizes your application, which is called the root module. 
+The root module includes the Angular HTTP Client module.
+
+app.module.ts
+[source, javascript, linenums, role="code_column"]
+----
+include::finish/src/main/frontend/src/app/app.module.ts[]
+----
 
 [role="code_command hotspot", subs="quotes"]
 ----
-#Update the `app.module.ts` file.#
+#Create the `app.module.ts` file.#
 `src/main/frontend/src/app/app.module.ts`
 ----
-[role="edit_command_text"]
-Import the [hotspot=importHttpClientModule]`HttpClientModule` class into the file, then
-update the [hotspot=importsArray]`imports` array within the
-[hotspot=atNgModule]`@NgModule` declaration to include
-[hotspot=httpClientModule]`HttpClientModule`.
 
-== Creating the Angular component
+The [hotspot=importHttpClientModule]`HttpClientModule` imports the class into the file.
+By using the [hotspot=atNgModule]`@NgModule` tag, you can declare a module and organize 
+your dependencies within the Angular framework. The `imports` array is a declaration array that imports the [hotspot=httpClientModule]`HttpClientModule` so that you can use the HTTP Client module in your application.
+
+// =================================================================================================
+// Creating the Angular component to fetch data
+// =================================================================================================
+
+== Creating the Angular service to fetch data
 
 You need to create the component that is used in the application to acquire and display
 data from the REST API. The component file contains two classes: the service, which
 handles data access, and the component itself, which handles the presentation of the
-data. The provided Angular application already contains a component.
-
-=== Defining a service to fetch data
+data.
 
 Services are classes in Angular that are designed to share their functionality across
 entire applications. A good service performs only one function, and it performs this
@@ -207,14 +207,9 @@ include::finish/src/main/frontend/src/app/app.component.ts[]
 
 [role="code_command hotspot", subs="quotes"]
 ----
-#Update the `app.component.ts` file.#
+#Create the `app.component.ts` file.#
 `src/main/frontend/src/app/app.component.ts`
 ----
-[role="edit_command_text"]
-Create the entire [hotspot=artistsServiceClass]`ArtistsService` class with the
-[hotspot=atInjectable]`@Injectable` annotation. Add the
-[hotspot=importHttpClient]`HttpClient` and [hotspot=importInjectable]`Injectable`
-import statements at the top.
 
 The file imports the [hotspot=importHttpClient]`HttpClient` class and the
 [hotspot=importInjectable]`Injectable` decorator.
@@ -250,7 +245,11 @@ be compatible with this feature, it must be converted to a Promise by invoking i
 Promise is how JavaScript represents the state of an asynchronous operation. If you
 want to learn more, check out https://promisejs.org[^] for an introduction.
 
-=== Defining a component to consume a service
+// =================================================================================================
+// Defining the component to consume the service
+// =================================================================================================
+
+== Defining the component to consume the service
 
 Components are the basic building blocks of Angular application user interfaces.
 Components are made up of a TypeScript class annotated with the
@@ -306,6 +305,10 @@ it returns a Promise. To retrieve the data from the request,
 Promise which takes in the data and stores it to the
 [hotspot=artistsClassMember]`artists` class member.
 
+// =================================================================================================
+// Creating the Angular component template
+// =================================================================================================
+
 == Creating the Angular component template
 
 Now that you have a service to fetch the data and a component to store it in, you
@@ -315,7 +318,7 @@ the artists data with formatting.
 
 [role="code_command hotspot", subs="quotes"]
 ----
-#Replace the component's template file `app.component.html`.#
+#Create the `app.component.html` file.#
 `src/main/frontend/src/app/app.component.html`
 ----
 
@@ -326,22 +329,32 @@ include::finish/src/main/frontend/src/app/app.component.html[]
 ----
 
 The template contains a [hotspot=artistsDiv]`div` element that is enumerated by using the
-`*ngFor` directive. The `artist` variable is bound to the `artists` member of the
+`ngFor` directive. The `artist` variable is bound to the `artists` member of the
 component. The [hotspot=artistsDiv]`div` element itself and all elements contained within it are repeated for
 each artist, and the [hotspot=artistNameAndAlbumsLengthPlaceholders]`{{ artist.name }}`
 and [hotspot=artistNameAndAlbumsLengthPlaceholders]`{{ artist.albums.length }}`
 placeholders are populated with the information from each artist. The same strategy is
 used to display each [hotspot=albumDiv]`album` by each artist.
 
-The Open Liberty server is already started, and the REST service is running. You can
-recompile the front end by running the following command:
+// =================================================================================================
+// Building the front end 
+// =================================================================================================
+
+== Building the front end
+
+The Open Liberty server is already started, and the REST service is running. In a new 
+command-line session, build the front end by running the following command:
+
 [role='command']
 ```
 mvn generate-resources
 ```
 
-Then, point your browser to the web application root
-http://localhost:9080/app[http://localhost:9080/app^] to see the following output:
+You can rebuild the front end at any time with the `generate-resources` Maven goal. 
+Any local changes to your TypeScript or HTML are picked up when you build the front end.
+
+Point your browser to the http://localhost:9080/app[http://localhost:9080/app^] 
+web application root to see the following output:
 
 [subs="quotes", role="no_copy"]
 ----
@@ -366,13 +379,7 @@ any test cases.
 
 Whenever you change and build your Angular implementation, the application root at
 http://localhost:9080/app[http://localhost:9080/app^] reflects the changes
-automatically. You can visit the root to manually check whether the artist JSON was
-consumed correctly. You can rebuild only your Angular front end by running the
-following command:
-[role='command']
-```
-mvn generate-resources
-```
+automatically. 
 
 When you are done checking the application root, exit development mode by
 pressing `CTRL+C` in the shell session where you ran the server,
@@ -383,8 +390,6 @@ when you build more complex Angular applications, testing becomes a crucial part
 of your development lifecycle. If you need to write test cases, follow the official
 unit testing and end-to-end testing documentation on the
 https://angular.io/guide/testing[official Angular page^].
-
-
 
 == Great work! You're done!
 
