@@ -138,11 +138,9 @@ endif::[]
 
 // Cloud hosted guide instruction
 ifdef::cloud-hosted[]
-Once your application is up and running, open another command-line session by selecting **Terminal** > **New Terminal** 
-from the menu of the IDE. Then use the following command to get the URL.
-Open your browser and check out your artist JSON by going to the URL that the command returns.
+You can find your artist JSON by running the following command at a terminal:
 ```
-echo http://${USERNAME}-9080.$(echo $TOOL_DOMAIN | sed 's/\.labs\./.proxy./g')/artists
+curl -s http://localhost:9080/artists | jq
 ```
 {: codeblock} 
 endif::[]
@@ -363,7 +361,7 @@ used to display each [hotspot=albumDiv]`album` by each artist.
 == Building the front end
 
 The Open Liberty server is already started, and the REST service is running. In a new 
-command-line session, build the front end by running the following command:
+command-line session, build the front end by running the following command in the root directory:
 
 [role='command']
 ```
