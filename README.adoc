@@ -431,7 +431,6 @@ https://angular.io/guide/testing[official Angular page^].
 
 == Great work! You're done!
 
-You just accessed a simple RESTful web service and consumed its resources by using
-Angular in Open Liberty.
+You just accessed a simple RESTful web service and consumed its resources by using Angular in Open Liberty.
 
 include::{common-includes}/attribution.adoc[subs="attributes"]
