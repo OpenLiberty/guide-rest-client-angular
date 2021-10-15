@@ -371,10 +371,21 @@ used to display each [hotspot=albumDiv]`album` by each artist.
 The Open Liberty server is already started, and the REST service is running. In a new 
 command-line session, build the front end by running the following command in the `start` directory:
 
+// Static guide instruction
+ifndef::cloud-hosted[]
 [role='command']
 ```
 mvn generate-resources
 ```
+endif::[]
+// Cloud hosted guide instruction
+ifdef::cloud-hosted[]
+```
+cd /home/project/guide-rest-client-angular/start
+mvn generate-resources
+```
+{: codeblock}
+endif::[]
 
 You can rebuild the front end at any time with the `generate-resources` Maven goal. 
 Any local changes to your TypeScript or HTML are picked up when you build the front end.
