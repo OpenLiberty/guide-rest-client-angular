@@ -64,8 +64,16 @@ artists.json
 include::finish/src/resources/artists.json[]
 ----
 
+// Static guide instruction
+ifndef::cloud-hosted[]
 You will implement an Angular client that consumes this JSON and displays its contents
 at the `\http://localhost:9080/app` URL.
+endif::[]
+
+// Cloud hosted guide instruction
+ifdef::cloud-hosted[]
+You will implement an Angular client that consumes this JSON and displays its contents.
+endif::[]
 
 To learn more about REST services and how you can write them, see
 https://openliberty.io/guides/rest-intro.html[Creating a RESTful web service^].
@@ -80,7 +88,20 @@ include::{common-includes}/gitclone.adoc[]
 [role='command']
 include::{common-includes}/twyb-intro.adoc[]
 
+// Static guide instruction
+ifndef::cloud-hosted[]
 Then, point your browser to the web application root http://localhost:9080/app[http://localhost:9080/app^] to see the following output:
+endif::[]
+
+// Cloud hosted guide instruction
+ifdef::cloud-hosted[]
+Select **Launch Application** from the menu of the IDE, 
+type **9080** to specify the port number for the microservice, and click the **OK** button. 
+You're redirected to a URL similar to **`https://accountname-9080.theiadocker-4.proxy.cognitiveclass.ai/app/`**, 
+where **accountname** is your account name. You will see the following output:
+endif::[]
+
+
 
 [subs="quotes", role="no_copy"]
 ----
@@ -106,11 +127,31 @@ the artist JSON is available to you.
 
 Navigate to the `start` directory to begin.
 
+// cloud-hosted guide instructions:
+ifdef::cloud-hosted[]
+```
+cd /home/project/guide-rest-client-angular/start
+```
+{: codeblock}
+endif::[]
+
 [role='command']
 include::{common-includes}/devmode-lmp33-start.adoc[]
 
+// Static guide instruction
+ifndef::cloud-hosted[]
 You can find your artist JSON at the
 http://localhost:9080/artists[http://localhost:9080/artists^] URL.
+endif::[]
+
+// Cloud hosted guide instruction
+ifdef::cloud-hosted[]
+You can find your artist JSON by running the following command at a terminal:
+```
+curl -s http://localhost:9080/artists | jq
+```
+{: codeblock} 
+endif::[]
 
 // =================================================================================================
 // Project configuration 
@@ -328,18 +369,41 @@ used to display each [hotspot=albumDiv]`album` by each artist.
 == Building the front end
 
 The Open Liberty server is already started, and the REST service is running. In a new 
-command-line session, build the front end by running the following command:
+command-line session, build the front end by running the following command in the `start` directory:
 
+// Static guide instruction
+ifndef::cloud-hosted[]
 [role='command']
 ```
 mvn generate-resources
 ```
+endif::[]
+// Cloud hosted guide instruction
+ifdef::cloud-hosted[]
+```
+cd /home/project/guide-rest-client-angular/start
+mvn generate-resources
+```
+{: codeblock}
+endif::[]
 
+The build might take a few minutes to complete.
 You can rebuild the front end at any time with the `generate-resources` Maven goal. 
 Any local changes to your TypeScript or HTML are picked up when you build the front end.
 
+// Static guide instruction
+ifndef::cloud-hosted[]
 Point your browser to the http://localhost:9080/app[http://localhost:9080/app^] 
 web application root to see the following output:
+endif::[]
+
+// Cloud hosted guide instruction
+ifdef::cloud-hosted[]
+Select **Launch Application** from the menu of the IDE, 
+type **9080** to specify the port number for the microservice, and click the **OK** button. 
+You're redirected to a URL similar to **`https://accountname-9080.theiadocker-4.proxy.cognitiveclass.ai/app/`**, 
+where **accountname** is your account name. You will see the following output:
+endif::[]
 
 [subs="quotes", role="no_copy"]
 ----
@@ -362,9 +426,18 @@ A web browser runs JavaScript, and the `curl` command doesn't.
 No explicit code directly uses the consumed artist JSON, so you don't need to write
 any test cases.
 
+// Static guide instruction
+ifndef::cloud-hosted[]
 Whenever you change and build your Angular implementation, the application root at
 http://localhost:9080/app[http://localhost:9080/app^] reflects the changes
 automatically. 
+endif::[]
+
+// Cloud hosted guide instruction
+ifdef::cloud-hosted[]
+Whenever you change and build your Angular implementation, the changes are automatically reflected
+at the URL for the launched application.
+endif::[]
 
 When you are done checking the application root, exit development mode by
 pressing `CTRL+C` in the command-line session where you ran the server,
@@ -378,7 +451,6 @@ https://angular.io/guide/testing[official Angular page^].
 
 == Great work! You're done!
 
-You just accessed a simple RESTful web service and consumed its resources by using
-Angular in Open Liberty.
+You just accessed a simple RESTful web service and consumed its resources by using Angular in Open Liberty.
 
 include::{common-includes}/attribution.adoc[subs="attributes"]
