@@ -31,7 +31,7 @@ export class ArtistsService {
       // end::httpInstanceAndAwaitFeatureAndHttpGetAndToPromise[]
       return data;
     } catch (error) {
-      console.error(`Error occurred: ${error}`);
+      console.error('Error occurred: ' + error);
     }
   }
   // end::fetchArtistsMethod[]
