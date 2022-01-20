@@ -20,7 +20,7 @@ If you are contributing text or content changes via a pull request, you need to 
 
 Add a line to the end of the Git commit message to sign your work:
 
-```
+```text
 Signed-off-by: Jane Williams <jane.williams@gmail.com>
 ```
 
