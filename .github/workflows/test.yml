@@ -28,6 +28,7 @@ jobs:
           VALIDATE_CSS: false
           VALIDATE_TYPESCRIPT_STANDARD: false
           VALIDATE_JAVASCRIPT_STANDARD: false
+          VALIDATE_JAVA: false
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LINTER_RULES_PATH: ./tools/pr-checker/linters/
           DEFAULT_BRANCH: prod
