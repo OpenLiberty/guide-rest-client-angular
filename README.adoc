@@ -79,7 +79,10 @@ endif::[]
 
 // Cloud hosted guide instruction
 ifdef::cloud-hosted[]
-Select **Launch Application** from the menu of the IDE,  type **9080** to specify the port number for the microservice, and click the **OK** button. You're redirected to a URL similar to **`https://accountname-9080.theiadocker-4.proxy.cognitiveclass.ai/app/`**, where **accountname** is your account name. You will see the following output:
+Select **Launch Application** from the menu of the IDE,  type **9080** to specify the port number for the microservice, and click the **OK** button. You're redirected to a URL similar to **`https://accountname-9080.theiadocker-4.proxy.cognitiveclass.ai/app/`**, where **accountname** is your account name.
+::startApplication{port="9080" display="internal" name="Launch Application" route="/"}
+
+ You will see the following output:
 endif::[]
 
 
@@ -164,16 +167,16 @@ Angular applications consist of modules, which are groups of classes that perfor
 
 You will create the module that organizes your application, which is called the root module. The root module includes the Angular HTTP Client module.
 
-app.module.ts
-[source, javascript, linenums, role="code_column"]
-----
-include::finish/src/main/frontend/src/app/app.module.ts[]
-----
-
 [role="code_command hotspot", subs="quotes"]
 ----
 #Create the `app.module.ts` file.#
 `src/main/frontend/src/app/app.module.ts`
+----
+
+app.module.ts
+[source, javascript, linenums, role="code_column"]
+----
+include::finish/src/main/frontend/src/app/app.module.ts[]
 ----
 
 The [hotspot=importHttpClientModule]`HttpClientModule` imports the class into the file. By using the [hotspot=atNgModule]`@NgModule` tag, you can declare a module and organize  your dependencies within the Angular framework. The `imports` array is a declaration array that imports the [hotspot=httpClientModule]`HttpClientModule` so that you can use the HTTP Client module in your application.
@@ -188,16 +191,16 @@ You need to create the component that is used in the application to acquire and 
 
 Services are classes in Angular that are designed to share their functionality across entire applications. A good service performs only one function, and it performs this function well. In this case, the `ArtistsService` class requests artists data from the REST service.
 
-app.component.ts
-[source, javascript, linenums, role="code_column hide_tags=providersProperty,importOnInitAndAngularCorePackage"]
-----
-include::finish/src/main/frontend/src/app/app.component.ts[]
-----
-
 [role="code_command hotspot", subs="quotes"]
 ----
 #Create the `app.component.ts` file.#
 `src/main/frontend/src/app/app.component.ts`
+----
+
+app.component.ts
+[source, javascript, linenums, role="code_column hide_tags=providersProperty,importOnInitAndAngularCorePackage"]
+----
+include::finish/src/main/frontend/src/app/app.component.ts[]
 ----
 
 The file imports the [hotspot=importHttpClient]`HttpClient` class and the [hotspot=importInjectable]`Injectable` decorator.
@@ -220,17 +223,18 @@ Components are the basic building blocks of Angular application user interfaces.
 
 Update the [hotspot=appComponentClass]`AppComponent` class to use the artists service to fetch the artists data and save it so the component can display it.
 
+[role="code_command hotspot", subs="quotes"]
+----
+#Update the `app.component.ts` file.#
+`src/main/frontend/src/app/app.component.ts`
+----
+
 app.component.ts
 [source, javascript, linenums, role="code_column"]
 ----
 include::finish/src/main/frontend/src/app/app.component.ts[]
 ----
 
-[role="code_command hotspot", subs="quotes"]
-----
-#Update the `app.component.ts` file.#
-`src/main/frontend/src/app/app.component.ts`
-----
 [role="edit_command_text"]
 Replace the entire [hotspot=appComponentClass]`AppComponent` class along with the [hotspot=atComponent]`@Component` annotation. Add [hotspot=importOnInitAndAngularCorePackage]`OnInit` to the list of imported classes at the top.
 
@@ -297,7 +301,10 @@ endif::[]
 
 // Cloud hosted guide instruction
 ifdef::cloud-hosted[]
-Select **Launch Application** from the menu of the IDE, type **9080** to specify the port number for the microservice, and click the **OK** button. You're redirected to a URL similar to **`https://accountname-9080.theiadocker-4.proxy.cognitiveclass.ai/app/`**, where **accountname** is your account name. You will see the following output:
+Select **Launch Application** from the menu of the IDE, type **9080** to specify the port number for the microservice, and click the **OK** button. You're redirected to a URL similar to **`https://accountname-9080.theiadocker-4.proxy.cognitiveclass.ai/app/`**, where **accountname** is your account name.
+::startApplication{port="9080" display="internal" name="Launch Application" route="/"}
+
+You will see the following output:
 endif::[]
 
 [subs="quotes", role="no_copy"]
