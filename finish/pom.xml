@@ -66,8 +66,8 @@
                             <goal>install-node-and-npm</goal>
                         </goals>
                         <configuration>
-                            <nodeVersion>v19.5.0</nodeVersion>
-                            <npmVersion>9.6.7</npmVersion>
+                            <nodeVersion>v20.2.0</nodeVersion>
+                            <npmVersion>9.7.1</npmVersion>
                         </configuration>
                     </execution>
                     <!-- end::node-resource-install[] -->
