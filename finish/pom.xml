@@ -46,13 +46,13 @@
             <plugin>
                 <groupId>io.openliberty.tools</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
-                <version>3.7.1</version>
+                <version>3.8.2</version>
             </plugin>
             <!-- tag::frontend-plugin[] -->
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
-                <version>1.12.1</version>
+                <version>1.13.3</version>
                 <configuration>
                     <!-- tag::working-dir[] -->
                     <workingDirectory>src/main/frontend</workingDirectory>
@@ -66,8 +66,8 @@
                             <goal>install-node-and-npm</goal>
                         </goals>
                         <configuration>
-                            <nodeVersion>v20.2.0</nodeVersion>
-                            <npmVersion>9.7.1</npmVersion>
+                            <nodeVersion>v16.20.1</nodeVersion>
+                            <npmVersion>8.5.0</npmVersion>
                         </configuration>
                     </execution>
                     <!-- end::node-resource-install[] -->
