@@ -1,7 +1,6 @@
-./mvnw -version
 #!/bin/bash
 set -euxo pipefail
-
+./mvnw -version
 ##############################################################################
 ##
 ##  GH action sCI test script
