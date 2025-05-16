@@ -70,7 +70,7 @@ https://openliberty.io/guides/rest-intro.html[Creating a RESTful web service^].
 include::{common-includes}/gitclone.adoc[]
 
 [role='command']
-include::{common-includes}/twyb-intro.adoc[]
+include::{common-includes}/twyb-intro-mvnw.adoc[]
 
 // Static guide instruction
 ifndef::cloud-hosted[]
@@ -98,7 +98,7 @@ dj wrote 0 albums:
 ----
 
 [role='command']
-include::{common-includes}/twyb-end.adoc[]
+include::{common-includes}/twyb-end-mvnw.adoc[]
 
 // =================================================================================================
 // Starting the service
@@ -118,7 +118,7 @@ cd /home/project/guide-rest-client-angular/start
 endif::[]
 
 [role='command']
-include::{common-includes}/devmode-lmp33-start.adoc[]
+include::{common-includes}/devmode-mvnw-start.adoc[]
 
 // Static guide instruction
 ifndef::cloud-hosted[]
@@ -276,10 +276,31 @@ The Open Liberty instance is already started, and the REST service is running. I
 
 // Static guide instruction
 ifndef::cloud-hosted[]
+include::{common-includes}/os-tabs.adoc[]
+
+[.tab_content.windows_section]
+--
 [role='command']
 ```
-mvn generate-resources
+mvnw.cmd generate-resources
 ```
+--
+
+[.tab_content.mac_section]
+--
+[role='command']
+```
+./mvnw generate-resources
+```
+--
+
+[.tab_content.linux_section]
+--
+[role='command']
+```
+./mvnw generate-resources
+```
+--
 endif::[]
 // Cloud hosted guide instruction
 ifdef::cloud-hosted[]
