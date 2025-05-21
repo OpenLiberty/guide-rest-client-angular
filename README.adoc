@@ -306,7 +306,7 @@ endif::[]
 ifdef::cloud-hosted[]
 ```bash
 cd /home/project/guide-rest-client-angular/start
-mvn generate-resources
+./mvnw generate-resources
 ```
 endif::[]
 
